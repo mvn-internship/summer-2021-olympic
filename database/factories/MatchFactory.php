@@ -24,15 +24,15 @@ class MatchFactory extends Factory
      */
     public function definition()
     {   
-        $rank_id = Rank::select('id')->get();
-        $group_id = Group::select('id')->get();
-        $tournament_id = Tournament::select('id')->get();
+        $rankId = Rank::pluck('id');
+        $groupId = Group::pluck('id');
+        $tournamentId = Tournament::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'rank_id' => $this->faker->randomElement($rank_id),
+            'rank_id' => $this->faker->randomElement($rankId),
             'match_code' => random_int(1000, 9999),
-            'tournament_id' => $this->faker->randomElement($tournament_id),
-            'group_id' => $this->faker->randomElement($group_id),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
+            'group_id' => $this->faker->randomElement($groupId),
         ];
     }
 }

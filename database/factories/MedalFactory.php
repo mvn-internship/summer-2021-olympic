@@ -24,14 +24,14 @@ class MedalFactory extends Factory
      */
     public function definition()
     {   
-        $rank_id = Rank::select('id')->get();
-        $tournament_id = Tournament::select('id')->get();
-        $team_id = Team::select('id')->get();
+        $rankId = Rank::pluck('id');
+        $tournamentId = Tournament::pluck('id');
+        $teamId = Team::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'rank_id' => $this->faker->randomElement($rank_id),
-            'tournament_id' => $this->faker->randomElement($tournament_id),
-            'team_id' => $this->faker->randomElement($team_id),
+            'rank_id' => $this->faker->randomElement($rankId),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
+            'team_id' => $this->faker->randomElement($teamId),
         ];
     }
 }

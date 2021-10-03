@@ -23,11 +23,11 @@ class RolePermissonFactory extends Factory
      */
     public function definition()
     {   
-        $permisson_id = Permisson::select('id')->get();
-        $role_id = Role::select('id')->get();
+        $permissonId = Permisson::pluck('id');
+        $roleId = Role::pluck('id');
         return [
-            'permisson_id' => $this->faker->RandomElement($permisson_id),
-            'role_id' => $this->faker->RandomElement($role_id),
+            'permisson_id' => $this->faker->RandomElement($permissonId),
+            'role_id' => $this->faker->RandomElement($roleId),
         ];
     }
 }

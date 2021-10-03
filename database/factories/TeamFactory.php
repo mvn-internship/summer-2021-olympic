@@ -24,15 +24,15 @@ class TeamFactory extends Factory
      */
     public function definition()
     {
-        $tournament_id = Tournament::select('id')->get();
-        $group_id = Group::select('id')->get();
-        $club_id = Club::select('id')->get();
+        $tournamentId = Tournament::pluck('id');
+        $groupId = Group::pluck('id');
+        $clubId = Club::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'tournament_id' => $this->faker->randomElement($tournament_id),
-            'group_id' => $this->faker->randomElement($group_id),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
+            'group_id' => $this->faker->randomElement($groupId),
             'coach_name' => $this->faker->name(),
-            'clubs_id' => $this->faker->randomElement($club_id),
+            'club_id' => $this->faker->randomElement($clubId),
         ];
     }
 }

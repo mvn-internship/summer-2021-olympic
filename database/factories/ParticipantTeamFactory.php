@@ -23,11 +23,11 @@ class ParticipantTeamFactory extends Factory
      */
     public function definition()
     {   
-        $participant_id = Participant::select('id')->get();
-        $team_id = Team::select('id')->get();
+        $participantId = Participant::pluck('id');
+        $teamId = Team::pluck('id');
         return [
-            'participant_id' => $this->faker->randomElement($participant_id),
-            'team_id' => $this->faker->randomElement($team_id),
+            'participant_id' => $this->faker->randomElement($participantId),
+            'team_id' => $this->faker->randomElement($teamId),
         ];
     }
 }

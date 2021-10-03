@@ -22,10 +22,10 @@ class DistrictFactory extends Factory
      */
     public function definition()
     {   
-        $province_id = Province::select('id')->get();
+        $provinceId = Province::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'province_id' => $this->faker->randomElement($province_id),
+            'province_id' => $this->faker->randomElement($provinceId),
         ];
     }
 }

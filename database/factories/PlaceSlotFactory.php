@@ -22,10 +22,10 @@ class PlaceSlotFactory extends Factory
      */
     public function definition()
     {   
-        $place_id = Place::select('id')->get();
+        $placeId = Place::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'place_id' => $this->faker->randomElement($place_id),
+            'place_id' => $this->faker->randomElement($placeId),
         ];
     }
 }

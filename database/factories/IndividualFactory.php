@@ -24,13 +24,13 @@ class IndividualFactory extends Factory
      */
     public function definition()
     {   
-        $competition_type_id = CompetitionType::select('id')->get();
-        $tournament_id = Tournament::select('id')->get();
-        $rank_id = Rank::select('id')->get();
+        $competition_typeId = CompetitionType::pluck('id');
+        $tournamentId = Tournament::pluck('id');
+        $rankId = Rank::pluck('id');
         return [
-            'rank_id' => $this->faker->randomElement($rank_id),
-            'tournament_id' => $this->faker->randomElement($tournament_id),
-            'competition_type_id' => $this->faker->randomElement($competition_type_id),
+            'rank_id' => $this->faker->randomElement($rankId),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
+            'competition_type_id' => $this->faker->randomElement($competition_typeId),
         ];
     }
 }

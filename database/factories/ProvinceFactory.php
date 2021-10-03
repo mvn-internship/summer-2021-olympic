@@ -22,10 +22,10 @@ class ProvinceFactory extends Factory
      */
     public function definition()
     {   
-        $country_id = Country::select('id')->get();
+        $countryId = Country::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'country_id' => $this->faker->randomElement($country_id),
+            'country_id' => $this->faker->randomElement($countryId),
         ];
     }
 }

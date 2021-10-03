@@ -31,7 +31,7 @@ class RoleFactory extends Factory
     		],
             [
     			'name' => 'referee'
-    		],
+    		]
     				
     	];
         DB::table('roles')->insert($data);

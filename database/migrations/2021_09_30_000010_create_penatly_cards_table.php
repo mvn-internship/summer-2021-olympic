@@ -24,7 +24,7 @@ class CreatePenatlyCardsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45)->nullable();
-            $table->string('time_penatly', 45)->nullable();
+            $table->integer('type_penatly')->nullable();
             $table->integer('participant_id')->unsigned()->nullable();
             $table->integer('match_id')->unsigned()->nullable();
         });

@@ -23,11 +23,11 @@ class OrganizationTournamentFactory extends Factory
      */
     public function definition()
     {
-        $tournament_id = Tournament::select('id')->get();
-        $team_id = Team::select('id')->get();
+        $tournamentId = Tournament::pluck('id');
+        $teamId = Team::pluck('id');
         return [
-            'tournament_id' => $this->faker->randomElement($tournament_id),
-            'teams_id' => $this->faker->randomElement($team_id),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
+            'teams_id' => $this->faker->randomElement($teamId),
         ];
     }
 }

@@ -25,20 +25,20 @@ class CreateRanksTable extends Migration
             $table->increments('id');
             $table->string('name', 45)->nullable();
             $table->integer('gender')->nullable();
-            $table->integer('rank_rules_id')->unsigned();
-            $table->integer('point_rules_id')->unsigned();
+            $table->integer('rank_rule_id')->unsigned();
+            $table->integer('point_rule_id')->unsigned();
 
-            $table->index(["rank_rules_id"], 'fk_ranks_rank_rules1_idx');
+            $table->index(["rank_rule_id"], 'fk_ranks_rank_rules1_idx');
 
-            $table->index(["point_rules_id"], 'fk_ranks_point_rules1_idx');
+            $table->index(["point_rule_id"], 'fk_ranks_point_rules1_idx');
 
 
-            $table->foreign('rank_rules_id', 'fk_ranks_rank_rules1_idx')
+            $table->foreign('rank_rule_id', 'fk_ranks_rank_rules1_idx')
                 ->references('id')->on('rank_rules')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('point_rules_id', 'fk_ranks_point_rules1_idx')
+            $table->foreign('point_rule_id', 'fk_ranks_point_rules1_idx')
                 ->references('id')->on('point_rules')
                 ->onDelete('no action')
                 ->onUpdate('no action');

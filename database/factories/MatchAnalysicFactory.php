@@ -25,16 +25,16 @@ class MatchAnalysicFactory extends Factory
      */
     public function definition()
     {   
-        $participant_id = Participant::select('id')->get();
-        $rank_id = Rank::select('id')->get();
-        $match_id = Match::select('id')->get();
-        $tournament_id = Tournament::select('id')->get();
+        $participantId = Participant::pluck('id');
+        $rankId = Rank::pluck('id');
+        $matchId = Match::pluck('id');
+        $tournamentId = Tournament::pluck('id');
         return [
-            'participant_id' => $this->faker->randomElement($participant_id),
-            'rank_id' => $this->faker->randomElement($rank_id),
-            'match_id' => $this->faker->randomElement($match_id),
+            'participant_id' => $this->faker->randomElement($participantId),
+            'rank_id' => $this->faker->randomElement($rankId),
+            'match_id' => $this->faker->randomElement($matchId),
             'score_time' => random_int(0, 100),
-            'tournament_id' => $this->faker->randomElement($tournament_id),
+            'tournament_id' => $this->faker->randomElement($tournamentId),
         ];
     }
 }

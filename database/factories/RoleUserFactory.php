@@ -23,11 +23,11 @@ class RoleUserFactory extends Factory
      */
     public function definition()
     {   
-        $role_id = Role::select('id')->get();
-        $user_id = User::select('id')->get();
+        $roleId = Role::pluck('id');
+        $userId = User::pluck('id');
         return [
-            'role_id' => $this->faker->randomElement($role_id),
-            'user_id' => $this->faker->randomElement($user_id),
+            'role_id' => $this->faker->randomElement($roleId),
+            'user_id' => $this->faker->randomElement($userId),
         ];
     }
 }

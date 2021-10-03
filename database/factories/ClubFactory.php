@@ -24,14 +24,14 @@ class ClubFactory extends Factory
      */
     public function definition()
     {   
-        $country_id = Country::select('id')->get();
-        $province_id = Province::select('id')->get();
-        $district_id =District::select('id')->get();
+        $countryId = Country::pluck('id');
+        $provinceId = Province::pluck('id');
+        $districtId =District::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'country_id' => $this->faker->randomElement($country_id),
-            'province_id' => $this->faker->randomElement($province_id),
-            'district_id' => $this->faker->randomElement($district_id),
+            'country_id' => $this->faker->randomElement($countryId),
+            'province_id' => $this->faker->randomElement($provinceId),
+            'district_id' => $this->faker->randomElement($districtId),
         ];
     }
 }

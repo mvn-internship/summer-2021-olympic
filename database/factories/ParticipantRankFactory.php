@@ -23,11 +23,11 @@ class ParticipantRankFactory extends Factory
      */
     public function definition()
     {   
-        $participant_id = Participant::select('id')->get();
-        $rank_id = Rank::select('id')->get();
+        $participantId = Participant::pluck('id');
+        $rankId = Rank::pluck('id');
         return [
-            'participant_id' => $this->faker->randomElement($participant_id),
-            'rank_id' => $this->faker->randomElement($rank_id),
+            'participant_id' => $this->faker->randomElement($participantId),
+            'rank_id' => $this->faker->randomElement($rankId),
         ];
     }
 }

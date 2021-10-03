@@ -23,13 +23,13 @@ class PenatlyCardFactory extends Factory
      */
     public function definition()
     {   
-        $participant_id = Participant::select('id')->get();
-        $match_id = Match::select('id')->get();
+        $participantId = Participant::pluck('id');
+        $matchId = Match::pluck('id');
         return [
             'name' => $this->faker->name(),
-            'time_penatly' => random_int(0, 100),
-            'participant_id' => $this->faker->randomElement($participant_id),
-            'match_id' => $this->faker->randomElement($match_id),
+            'type_penatly' => random_int(1, 2),
+            'participant_id' => $this->faker->randomElement($participantId),
+            'match_id' => $this->faker->randomElement($matchId),
         ];
     }
 }

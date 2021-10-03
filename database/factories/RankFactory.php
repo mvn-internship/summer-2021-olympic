@@ -23,13 +23,13 @@ class RankFactory extends Factory
      */
     public function definition()
     {   
-        $rank_rules_id = RankRule::select('id')->get();
-        $point_rules_id = PointRule::select('id')->get();
+        $rankRulesId = RankRule::pluck('id');
+        $pointRulesId = PointRule::pluck('id');
         return [
             'name' => $this->faker->name(),
             'gender' => random_int(1, 2),
-            'rank_rules_id' => $this->faker->randomElement($rank_rules_id),
-            'point_rules_id' => $this->faker->randomElement($point_rules_id),
+            'rank_rule_id' => $this->faker->randomElement($rankRulesId),
+            'point_rule_id' => $this->faker->randomElement($pointRulesId),
         ];
     }
 }

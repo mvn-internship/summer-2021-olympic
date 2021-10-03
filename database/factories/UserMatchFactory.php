@@ -23,11 +23,11 @@ class UserMatchFactory extends Factory
      */
     public function definition()
     {   
-        $user_id = User::select('id')->get();
-        $match_id = Match::select('id')->get();
+        $userId = User::pluck('id');
+        $matchId = Match::pluck('id');
         return [
-            'user_id' => $this->faker->randomElement($user_id),
-            'match_id' => $this->faker->randomElement($match_id),
+            'user_id' => $this->faker->randomElement($userId),
+            'match_id' => $this->faker->randomElement($matchId),
         ];
     }
 }

@@ -23,15 +23,15 @@ class ScheduleFactory extends Factory
      */
     public function definition()
     {   
-        $match_id = Match::select('id')->get();
-        $place_id = Place::select('id')->get();
+        $matchId = Match::pluck('id');
+        $placeId = Place::pluck('id');
         return [
             'name' => $this->faker->name(),
             'date' => $this->faker->date(),
             'start_time' => $this->faker->time($format = 'H:i:s'),
             'end_time' => $this->faker->time($format = 'H:i:s'),
-            'match_id' => $this->faker->randomElement($match_id),
-            'place_id' => $this->faker->randomElement($place_id),
+            'match_id' => $this->faker->randomElement($matchId),
+            'place_id' => $this->faker->randomElement($placeId),
         ];
     }
 }

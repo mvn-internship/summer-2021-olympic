@@ -27,7 +27,7 @@ class CreateTeamsTable extends Migration
             $table->integer('tournament_id')->unsigned()->nullable();
             $table->string('coach_name', 45)->nullable();
             $table->integer('group_id')->unsigned();
-            $table->integer('clubs_id')->unsigned()->nullable();
+            $table->integer('club_id')->unsigned()->nullable();
 
             $table->index(["group_id"], 'fk_teams_groups1_idx');
 

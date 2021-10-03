@@ -26,7 +26,7 @@ class PointRuleFactory extends Factory
             [
                 'win' => 2,
                 'lose' => 0,
-                'draw' => 1,
+                'draw' => 1
             ]
         ];
         DB::table('point_rules')->insert($data);

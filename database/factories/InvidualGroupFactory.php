@@ -23,11 +23,11 @@ class InvidualGroupFactory extends Factory
      */
     public function definition()
     {   
-        $individual_id = Individual::select('id')->get();
-        $group_id = Group::select('id')->get();
+        $individualId = Individual::pluck('id');
+        $groupId = Group::pluck('id');
         return [
-            'individual_id' => $this->faker->randomElement($individual_id),
-            'group_id' => $this->faker->randomElement($group_id),
+            'individual_id' => $this->faker->randomElement($individualId),
+            'group_id' => $this->faker->randomElement($groupId),
         ];
     }
 }
