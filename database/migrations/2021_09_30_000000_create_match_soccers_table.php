@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMatchesTable extends Migration
+class CreateMatchSoccersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'matches';
+    public $tableName = 'match_soccers';
 
     /**
      * Run the migrations.
@@ -28,6 +28,12 @@ class CreateMatchesTable extends Migration
             $table->integer('match_code')->nullable();
             $table->integer('tournament_id')->nullable();
             $table->integer('group_id')->nullable();
+        });
+        Schema::table('penatly_cards', function (Blueprint $table) {
+            $table->foreign('match_id', 'fk_penatly_card_match_soccers1_idx')
+                ->references('id')->on('match_soccers')
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 

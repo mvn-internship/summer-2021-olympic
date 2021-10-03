@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\PenatlyCard;
 use App\Models\Participant;
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PenatlyCardFactory extends Factory
@@ -24,7 +24,7 @@ class PenatlyCardFactory extends Factory
     public function definition()
     {   
         $participantId = Participant::pluck('id');
-        $matchId = Match::pluck('id');
+        $matchId = MatchSoccer::pluck('id');
         return [
             'name' => $this->faker->name(),
             'type_penatly' => random_int(1, 2),

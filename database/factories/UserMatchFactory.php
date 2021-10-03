@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\UserMatch;
 use App\Models\User;
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserMatchFactory extends Factory
@@ -24,7 +24,7 @@ class UserMatchFactory extends Factory
     public function definition()
     {   
         $userId = User::pluck('id');
-        $matchId = Match::pluck('id');
+        $matchId = MatchSoccer::pluck('id');
         return [
             'user_id' => $this->faker->randomElement($userId),
             'match_id' => $this->faker->randomElement($matchId),

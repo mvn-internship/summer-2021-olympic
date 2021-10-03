@@ -30,13 +30,13 @@ class CreateSchedulesTable extends Migration
             $table->integer('match_id')->unsigned()->nullable();
             $table->integer('place_id')->unsigned()->nullable();
 
-            $table->index(["match_id"], 'fk_schedules_matches1_idx');
+            $table->index(["match_id"], 'fk_schedules_match_soccers1_idx');
 
             $table->index(["place_id"], 'fk_schedules_places1_idx');
 
 
-            $table->foreign('match_id', 'fk_schedules_matches1_idx')
-                ->references('id')->on('matches')
+            $table->foreign('match_id', 'fk_schedules_match_soccers1_idx')
+                ->references('id')->on('match_soccers')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

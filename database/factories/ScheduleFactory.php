@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Schedule;
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use App\Models\Place;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +23,7 @@ class ScheduleFactory extends Factory
      */
     public function definition()
     {   
-        $matchId = Match::pluck('id');
+        $matchId = MatchSoccer::pluck('id');
         $placeId = Place::pluck('id');
         return [
             'name' => $this->faker->name(),
