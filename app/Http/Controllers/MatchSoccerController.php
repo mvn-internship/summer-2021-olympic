@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Match;
 use Illuminate\Http\Request;
 
-class MatchController extends Controller
+class MatchSoccerController extends Controller
 {
     /**
      * Display a listing of the resource.
