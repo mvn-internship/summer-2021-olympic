@@ -4,7 +4,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>@yield('title', 'Football Admin')</title>
+<title>@yield('title', 'Soccer Admin')</title>
 
 <!-- Custom fonts for this template-->
 <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

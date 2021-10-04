@@ -27,14 +27,13 @@ class AdminLoginController extends Controller
      *
      * @var string
      */
-
     protected $redirectTo = '/admin';
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
