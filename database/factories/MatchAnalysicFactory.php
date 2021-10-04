@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\MatchAnalysic;
 use App\Models\Participant;
 use App\Models\Rank;
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use App\Models\Tournament;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +27,7 @@ class MatchAnalysicFactory extends Factory
     {   
         $participantId = Participant::pluck('id');
         $rankId = Rank::pluck('id');
-        $matchId = Match::pluck('id');
+        $matchId = MatchSoccer::pluck('id');
         $tournamentId = Tournament::pluck('id');
         return [
             'participant_id' => $this->faker->randomElement($participantId),

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\MatchResult;
 use App\Models\Team;
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MatchResultFactory extends Factory
@@ -24,7 +24,7 @@ class MatchResultFactory extends Factory
     public function definition()
     {   
         $teamId = Team::pluck('id');
-        $matchId = Match::pluck('id');
+        $matchId = MatchSoccer::pluck('id');
         return [
             'team_id' => $this->faker->randomElement($teamId),
             'sec' => random_int(1, 3),

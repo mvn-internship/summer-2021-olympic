@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\InvidualGroup::factory(10)->create();
         \App\Models\Team::factory(10)->create();
         \App\Models\OrganizationTournament::factory(10)->create();
-        \App\Models\Match::factory(10)->create();
+        \App\Models\MatchSoccer::factory(10)->create();
         \App\Models\MatchResult::factory(10)->create();
         \App\Models\Schedule::factory(10)->create();
         \App\Models\Medal::factory(10)->create();

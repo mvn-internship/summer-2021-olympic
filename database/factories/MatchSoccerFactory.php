@@ -2,20 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use App\Models\Rank;
 use App\Models\Tournament;
 use App\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MatchFactory extends Factory
+class MatchSoccerFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Match::class;
+    protected $model = MatchSoccer::class;
 
     /**
      * Define the model's default state.

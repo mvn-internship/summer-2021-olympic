@@ -26,13 +26,13 @@ class CreateUserMatchesTable extends Migration
             $table->integer('match_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
 
-            $table->index(["match_id"], 'fk_user_match_matches1_idx');
+            $table->index(["match_id"], 'fk_user_match_match_soccers1_idx');
 
             $table->index(["user_id"], 'fk_user_match_users1_idx');
 
 
-            $table->foreign('match_id', 'fk_user_match_matches1_idx')
-                ->references('id')->on('matches')
+            $table->foreign('match_id', 'fk_user_match_match_soccers1_idx')
+                ->references('id')->on('match_soccers')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

@@ -28,11 +28,11 @@ class CreateMatchResultsTable extends Migration
             $table->integer('team_point')->nullable();
             $table->integer('match_id')->unsigned()->nullable();
 
-            $table->index(["match_id"], 'fk_match_results_matches1_idx');
+            $table->index(["match_id"], 'fk_match_results_match_soccers1_idx');
 
 
-            $table->foreign('match_id', 'fk_match_results_matches1_idx')
-                ->references('id')->on('matches')
+            $table->foreign('match_id', 'fk_match_results_match_soccers1_idx')
+                ->references('id')->on('match_soccers')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });
