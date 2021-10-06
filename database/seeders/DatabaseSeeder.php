@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ]]);
         \App\Models\Participant::factory(10)->create();
         \App\Models\Permisson::factory(10)->create();
-        \App\Models\Role::factory(1)->create();
+        \App\Models\Role::factory(0)->create();
         \App\Models\RolePermisson::factory(10)->create();
         \App\Models\User::factory(10)->create();
         \App\Models\RoleUser::factory(10)->create();

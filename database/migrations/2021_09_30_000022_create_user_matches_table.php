@@ -25,6 +25,7 @@ class CreateUserMatchesTable extends Migration
             $table->increments('id');
             $table->integer('match_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('role_id')->unsigned()->nullable();
 
             $table->index(["match_id"], 'fk_user_match_match_soccers1_idx');
 

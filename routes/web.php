@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserMatchController;
+use App\Http\Controllers\Auth\UserLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ADMIN
 Route::get('/login', [UserLoginController::class, 'showLoginForm']);
 Route::post('/login', [UserLoginController::class, 'login'])->name('user.login');
 
@@ -21,3 +24,9 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [HomeController::class, 'profile']);
 });
+
+Route::group(['prefix' => 'admin'] , function () {
+    Route::resource('staff', UserMatchController::class);
+});
+
+//USER
