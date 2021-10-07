@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <form method="POST" action="{{ route('user.login') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         <input type="text" name="email" placeholder="email">
         <input type="password" name="password" placeholder="password">
