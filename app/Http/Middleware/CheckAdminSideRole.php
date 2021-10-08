@@ -19,13 +19,14 @@ class CheckAdminSideRole
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()) {
+            $pass = false;
             $roles = $request->user()->roles;
             foreach ($roles as $role) {
-                if (!in_array($role->name, StaticArray::$admin_side)) {
-                    abort(403);
+                if (in_array($role->name, StaticArray::$admin_side)) {
+                    $pass = true;
                 }
             }
+            return $pass ? $next($request) : abort(403);
         }
-        return $next($request);
     }
 }

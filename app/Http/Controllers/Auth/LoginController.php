@@ -53,7 +53,7 @@ class LoginController extends Controller
         $data = $request->only('email', 'password');
         if (Auth::attempt($data, true)) {
             $request->session()->regenerate();
-            AuthUtils::redirectAuthenticatedRoute();
+            return AuthUtils::redirectAuthenticatedRoute();
         }
 
         return back()->with(['error' => 'Login failed!']);
@@ -66,8 +66,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        $logoutRedirect = route($request->segment(1) === 'admin' ? 'admin.login' : 'user.login');
-        dd($logoutRedirect);
-        return redirect()->$logoutRedirect;
+        $logoutRedirect = $request->segment(1) === 'admin' ? 'admin.login' : 'user.login';
+        return redirect()->route($logoutRedirect);
     }
 }
