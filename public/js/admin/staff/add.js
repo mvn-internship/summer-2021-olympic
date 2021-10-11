@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    // $('#table-staff-new').hide();
     $('#btn-submit').click(function(e){
         e.preventDefault();
         var formData = $('#form-add-staff').serializeArray();
@@ -13,7 +12,10 @@ $(document).ready(function(){
                 $('#staff-new').append("<tr><td>" + response['user'] + "</td><td>" + response['match'] + "</td><td>" + response['role'] + "</td></tr>");
             },
             error : function(error){
-                $('#notification').html('Error');
+                start = error['responseText'].indexOf('The');
+                end = error['responseText'].length - 4;
+                data = error['responseText'].substring(start, end);
+                $('#notification').html(data);
             }
         });
     });

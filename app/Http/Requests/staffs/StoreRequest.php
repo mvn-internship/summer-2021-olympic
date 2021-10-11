@@ -3,6 +3,9 @@
 namespace App\Http\Requests\staffs;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+
 
 class StoreRequest extends FormRequest
 {
@@ -39,5 +42,11 @@ class StoreRequest extends FormRequest
             'match_id.exists' => __('message.exists'),
             'role_id.exists' => __('message.exists'),
         ];
+    }
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'data'      => $validator->errors()
+        ], 422));
     }
 }

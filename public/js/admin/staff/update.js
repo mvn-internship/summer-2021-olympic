@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $('#form-update-staff').on('submit', (function(e){
         e.preventDefault();
-        console.log(this)
         const form = $(this);
         var formData = form.serializeArray();
         const url = form.attr('action');
@@ -14,7 +13,10 @@ $(document).ready(function(){
                 $('#notification').html('Success');
             },
             error : function(error){
-                $('#notification').html('Error');
+                start = error['responseText'].indexOf('The');
+                end = error['responseText'].length - 4;
+                data = error['responseText'].substring(start, end);
+                $('#notification').html(data);
             }
         });
     }))
