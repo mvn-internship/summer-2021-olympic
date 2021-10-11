@@ -32,13 +32,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Staff</span>
+            <span>{{ __('label.staff') }}</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Staff:</h6>
-                <a class="collapse-item" href="{{ route('staff.index') }}">List</a>
-                <a class="collapse-item" href="{{ route('staff.create') }}">Add</a>
+                <h6 class="collapse-header">{{ __('label.manage_staff') }}</h6>
+                <a class="collapse-item" href="{{ route('staff.index') }}">{{ __('label.list') }}</a>
+                <a class="collapse-item" href="{{ route('staff.create') }}">{{ __('label.add') }}</a>
             </div>
         </div>
     </li>

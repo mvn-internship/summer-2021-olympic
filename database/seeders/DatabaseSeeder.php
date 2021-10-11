@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +24,20 @@ class DatabaseSeeder extends Seeder
         ]]);
         \App\Models\Participant::factory(10)->create();
         \App\Models\Permisson::factory(10)->create();
-        \App\Models\Role::factory(0)->create();
+        // \App\Models\Role::factory(1)->create();
+        $data=[
+    		[
+    			'name' => 'admin'
+    		],
+            [
+    			'name' => 'client'
+    		],
+            [
+    			'name' => 'referee'
+    		]
+    				
+    	];
+        DB::table('roles')->insert($data);
         \App\Models\RolePermisson::factory(10)->create();
         \App\Models\User::factory(10)->create();
         \App\Models\RoleUser::factory(10)->create();

@@ -19,10 +19,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Match</th>
-                            <th>Role</th>
-                            <th>Action</th>
+                            <th>{{ __('label.name') }}</th>
+                            <th>{{ __('label.match') }}</th>
+                            <th>{{ __('label.role') }}</th>
+                            <th>{{ __('label.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,14 +73,8 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
-            $('.btn-delete').click(function (){
-                var url = $(this).attr('data-url');
-                $('#form-delete').attr('action', url);
-            });
-        })
-    </script>
+
+    <script src="{{ asset('js/admin/staff/list.js') }}"></script>
     <!-- Page level plugins -->
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>

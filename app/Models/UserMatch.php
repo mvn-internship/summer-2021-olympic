@@ -17,14 +17,14 @@ class UserMatch extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public function matchSoccer()
     {
-        return $this->hasOne(MatchSoccer::class, 'id', 'match_id');
+        return $this->belongsTo(MatchSoccer::class, 'match_id', 'id');
     }
     public function role()
     {   
-        return $this->hasOne(Role::class, 'id', 'role_id');
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }
