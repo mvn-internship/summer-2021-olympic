@@ -137,9 +137,7 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'login-fail' => 'Oops. Something went wrong!'
     ],
 
     /*
