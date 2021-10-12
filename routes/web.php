@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\UserLoginController;
@@ -15,10 +16,11 @@ use App\Http\Controllers\Auth\UserLoginController;
 |
 */
 
-Route::get('/login', [UserLoginController::class, 'showLoginForm']);
-Route::post('/login', [UserLoginController::class, 'login'])->name('user.login');
-
+Route::get('/login', [LoginController::class, 'showUserLoginForm'])->name('user.login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [HomeController::class, 'index'])->name('user.home');
-Route::group(['middleware' => ['auth']], function () {
+
+Route::group(['middleware' => ['auth', 'role.user']], function () {
     Route::get('/profile', [HomeController::class, 'profile']);
 });

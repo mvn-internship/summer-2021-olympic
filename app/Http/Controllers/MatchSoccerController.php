@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use Illuminate\Http\Request;
 
 class MatchSoccerController extends Controller
@@ -13,8 +13,9 @@ class MatchSoccerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.pages.matchs.list');
+    {   
+        $matches = MatchSoccer::all();
+        return view('admin.pages.matchs.list', ['matches' => $matches]);
     }
 
     /**

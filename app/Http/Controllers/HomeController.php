@@ -16,4 +16,9 @@ class HomeController extends Controller
     {
         return view('user.pages.index');
     }
+
+    public function profile()
+    {
+        print(auth()->user()->name);
+    }
 }

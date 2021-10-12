@@ -20,27 +20,31 @@
                     <thead>
                         <tr>
                             <th>{{ __('label.name') }}</th>
-                            <th>{{ __('label.match') }}</th>
-                            <th>{{ __('label.role') }}</th>
+                            <th>{{ __('label.rank') }}</th>
+                            <th>{{ __('label.match-code') }}</th>
+                            <th>{{ __('label.tournament') }}</th>
+                            <th>{{ __('label.group') }}</th>
                             <th>{{ __('label.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($userMatches as $userMatch)
+                        @foreach ($matches as $match)
                         <tr>
-                            <td>{{  $userMatch->user->name  }}</td>
-                            <td>{{ $userMatch->matchSoccer->name }}</td>
-                            <td>{{ $userMatch->role->name }}</td>
+                            <td>{{  $match->name  }}</td>
+                            <td>{{ $match->rank->name }}</td>
+                            <td>{{ $match->match_code }}</td>
+                            <td>{{ $match->tournament->name }}</td>
+                            <td>{{ $match->group->name }}</td>
                             <td>
-                                <a href="{{ route('staff.edit', $userMatch->id) }}" class="btn btn-info btn-circle btn-sm">
+                                <a href="" class="btn btn-info btn-circle btn-sm">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
-                                <button class="btn btn-danger btn-circle btn-sm btn-delete" data-toggle="modal" data-url="{{ route('staff.destroy', $userMatch->id) }}" data-target="#exampleModal">
+                                <button class="btn btn-danger btn-circle btn-sm btn-delete" data-toggle="modal" data-url="" data-target="#exampleModal">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
