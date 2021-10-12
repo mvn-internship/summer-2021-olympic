@@ -23,7 +23,7 @@
             <div class="form-label" style="color: blue">{{ session('notification') }}</div>
             @endif
             <p id='notification' class="form-label" style="color: blue"></p>
-            <form method="PUT" action="{{ route('api.staff.update', $userMatch->id) }}" id="form-update-staff">
+            <form method="PUT" action="{{ route('api.staffs.update', $userMatch->id) }}" id="form-update-staff">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

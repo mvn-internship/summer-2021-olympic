@@ -23,7 +23,7 @@
             <div class="form-label" style="color: blue">{{ session('notification') }}</div>
             @endif
             <p id='notification' class="form-label" style="color: blue"></p>
-            <form method="POST" action="{{ route('staff.store') }}" id="form-add-staff" style="margin-bottom: 20px">
+            <form method="POST" action="{{ route('staffs.store') }}" id="form-add-staff" style="margin-bottom: 20px">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label" for="user">{{ __('label.user') }}</label>

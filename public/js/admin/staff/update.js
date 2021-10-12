@@ -13,7 +13,7 @@ $(document).ready(function(){
                 $('#notification').html('Success');
             },
             error : function(error){
-                start = error['responseText'].indexOf('The');
+                start = error['responseText'].indexOf('The input');
                 end = error['responseText'].length - 4;
                 data = error['responseText'].substring(start, end);
                 $('#notification').html(data);

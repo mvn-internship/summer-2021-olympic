@@ -18,6 +18,6 @@ use App\Http\Controllers\Api\UserMatchController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('staff', UserMatchController::class, [
+Route::apiResource('staffs', UserMatchController::class, [
     'as' => 'api'
 ]);

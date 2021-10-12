@@ -3,7 +3,7 @@ $(document).ready(function(){
         e.preventDefault();
         var formData = $('#form-add-staff').serializeArray();
         $.ajax({
-            url : '../../api/staff',
+            url : '../../api/staffs',
             type : 'POST',
             data : formData,
             success : function(response){
@@ -12,7 +12,7 @@ $(document).ready(function(){
                 $('#staff-new').append("<tr><td>" + response['user'] + "</td><td>" + response['match'] + "</td><td>" + response['role'] + "</td></tr>");
             },
             error : function(error){
-                start = error['responseText'].indexOf('The');
+                start = error['responseText'].indexOf('The input');
                 end = error['responseText'].length - 4;
                 data = error['responseText'].substring(start, end);
                 $('#notification').html(data);

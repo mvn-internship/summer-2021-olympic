@@ -32,20 +32,16 @@ class UserMatchController extends Controller
      */
     public function store(StoreRequest $request)
     {     
-        $validator = Validator::make($request->all(), $request->rules());
-        if($validator->fails()){
-        }else{
-            $newStaff = UserMatch::create($request->all());
-            $user = User::find($newStaff->user_id)->name;
-            $match = MatchSoccer::find($newStaff->match_id)->name;
-            $role = Role::find($newStaff->role_id)->name;
-            $userMatch = [
-                'user' => $user, 
-                'match' => $match, 
-                'role' => $role,
-            ];
-            return response()->json($userMatch);
-        }
+        $newStaff = UserMatch::create($request->all());
+        $user = User::find($newStaff->user_id)->name;
+        $match = MatchSoccer::find($newStaff->match_id)->name;
+        $role = Role::find($newStaff->role_id)->name;
+        $userMatch = [
+            'user' => $user, 
+            'match' => $match, 
+            'role' => $role,
+        ];
+        return response()->json($userMatch);
     }
 
     /**
@@ -68,12 +64,8 @@ class UserMatchController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {   
-        $validator = Validator::make($request->all(), $request->rules());
-        if ($validator->fails()) {
-        }else{
             $userMatch = UserMatch::find($id)->update($request->all());
             return response()->json($userMatch);
-        }
     }
 
     /**
