@@ -22,7 +22,7 @@ class RoleUserFactory extends Factory
      * @return array
      */
     public function definition()
-    {   
+    {
         $roleId = Role::pluck('id');
         $userId = User::pluck('id');
         return [

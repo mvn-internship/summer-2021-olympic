@@ -21,19 +21,24 @@ class RoleFactory extends Factory
      * @return array
      */
     public function definition()
-    {   
-        $data=[
-    		[
-    			'name' => 'admin'
-    		],
+    {
+        $data = [
             [
-    			'name' => 'client'
-    		],
+                'name' => 'admin'
+            ],
             [
-    			'name' => 'referee'
-    		]
-    				
-    	];
+                'name' => 'staff'
+            ],
+            [
+                'name' => 'secretary'
+            ],
+            [
+                'name' => 'team_manager'
+            ],
+            [
+                'name' => 'participant'
+            ]
+        ];
         DB::table('roles')->insert($data);
         return [
             // 'name' => $this->faker->name(),
