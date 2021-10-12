@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use AuthUtils;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -43,20 +43,15 @@ class LoginController extends Controller
         return view('user.auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        $data = $request->only('email', 'password');
-        if (Auth::attempt($data, true)) {
+        $validated = $request->validated();
+        if (Auth::attempt($validated, true)) {
             $request->session()->regenerate();
-            return AuthUtils::redirectAuthenticatedRoute();
+            return redirectAuthenticatedRoute();
         }
 
-        return back()->with(['error' => 'Login failed!']);
+        return redirect()->back()->with('error', trans('validation.custom.login-fail'));
     }
 
     public function logout(Request $request)
