@@ -14,7 +14,7 @@ class MatchSoccerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.matchs.list');
     }
 
     /**
@@ -44,7 +44,7 @@ class MatchSoccerController extends Controller
      * @param  \App\Models\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Match $match)
+    public function show()
     {
         //
     }
@@ -55,7 +55,7 @@ class MatchSoccerController extends Controller
      * @param  \App\Models\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Match $match)
+    public function edit()
     {
         //
     }
@@ -67,7 +67,7 @@ class MatchSoccerController extends Controller
      * @param  \App\Models\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Match $match)
+    public function update(Request $request)
     {
         //
     }
@@ -78,7 +78,7 @@ class MatchSoccerController extends Controller
      * @param  \App\Models\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Match $match)
+    public function destroy()
     {
         //
     }

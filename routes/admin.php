@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MatchSoccerController;
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -20,4 +20,6 @@ Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login
 
 Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+   
 });
+Route::resource('match', MatchSoccerController::class);
