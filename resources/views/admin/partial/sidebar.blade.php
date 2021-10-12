@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        <div class="sidebar-brand-text mx-3">{{ __('label.side-bar.app-name') }}</div>
     </a>
 
     <!-- Divider -->
@@ -14,10 +14,18 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ asset('admin/analysis') }}">
-            <i class="fas fa-list"></i>
-            <span>{{ Lang::get('label.analysis') }}</span></a>
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>{{ __('label.side-bar.dashboard') }}</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.listAnalysis') }}">
+            <i class="fas fa-list"></i>
+            <span>{{ __('label.analysis') }}</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MatchResultController;
-
-use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MatchResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [AdminLoginController::class, 'show']);
-Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
+Route::get('/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-Route::group(['middleware' => ['auth:admin']], function () {
+Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('listAnalysis');
+    Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('admin.listAnalysis');
 
 });

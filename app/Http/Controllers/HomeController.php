@@ -14,6 +14,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        return view('user.pages.index');
+    }
+
+    public function profile()
+    {
+        print(auth()->user()->name);
     }
 }
