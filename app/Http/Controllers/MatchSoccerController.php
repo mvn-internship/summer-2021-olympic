@@ -15,7 +15,7 @@ class MatchSoccerController extends Controller
     public function index()
     {   
         $matches = MatchSoccer::all();
-        return view('admin.pages.matchs.list', ['matches' => $matches]);
+        return view('admin.pages.matches.list', ['matches' => $matches]);
     }
 
     /**
@@ -58,7 +58,7 @@ class MatchSoccerController extends Controller
      */
     public function edit()
     {
-        //
+        return "ok";
     }
 
     /**

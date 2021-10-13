@@ -23,8 +23,18 @@ return [
     'footer' => [
         'copy-right' => 'Copyright © Your Website 2019'
     ],
-    'rank' => 'Rank',
-    'match-code' => 'Match Code',
-    'tournament' => 'Tournament',
-    'group' => 'Group',
+    'match' => [
+        'Match' => 'Match',
+        'manage' => 'Manage Match',
+        'match-code' => 'Match Code',
+    ],
+    'rank' => [
+        'rank' => 'Rank',
+    ],
+    'tournament' => [
+        'tournament' => 'Tournament',
+    ],
+    'group' => [
+        'group' => 'Group',
+    ],
 ];

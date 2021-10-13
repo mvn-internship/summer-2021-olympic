@@ -20,10 +20,10 @@
                     <thead>
                         <tr>
                             <th>{{ __('label.name') }}</th>
-                            <th>{{ __('label.rank') }}</th>
-                            <th>{{ __('label.match-code') }}</th>
-                            <th>{{ __('label.tournament') }}</th>
-                            <th>{{ __('label.group') }}</th>
+                            <th>{{ __('label.rank.rank') }}</th>
+                            <th>{{ __('label.match.match-code') }}</th>
+                            <th>{{ __('label.tournament.tournament') }}</th>
+                            <th>{{ __('label.group.group') }}</th>
                             <th>{{ __('label.action') }}</th>
                         </tr>
                     </thead>
@@ -36,7 +36,7 @@
                             <td>{{ $match->tournament->name }}</td>
                             <td>{{ $match->group->name }}</td>
                             <td>
-                                <a href="" class="btn btn-info btn-circle btn-sm">
+                                <a href="{{ route('matches.edit', $match->id) }}" class="btn btn-info btn-circle btn-sm">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
                                 <button class="btn btn-danger btn-circle btn-sm btn-delete" data-toggle="modal" data-url="" data-target="#exampleModal">

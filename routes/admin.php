@@ -21,5 +21,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::resource('match', MatchSoccerController::class);
+    Route::resource('matches', MatchSoccerController::class);
 });
