@@ -13,10 +13,24 @@ $(document).ready(function(){
                 $('#notification').html('Success');
             },
             error : function(error){
-                start = error['responseText'].indexOf('The input');
-                end = error['responseText'].length - 4;
-                data = error['responseText'].substring(start, end);
-                $('#notification').html(data);
+                $arr = error['responseText'].split('\"');
+                $mess = [];
+                $mess.push($arr[9]);
+                for (var i = 13; i < $arr.length; i=i+4){
+                    $check = true;
+                    for (var j = 0; j < $mess.length; j++){
+                        if($arr[i] == $mess[j]) {
+                            $check = false;
+                            break;
+                        }
+                    }
+                    if($check) {
+                        $mess.push($arr[i]);
+                    }
+                }
+                for (var i = 0; i < $mess.length; i++){
+                    $('#notification').append("<p>" + $mess[i] + "</p>");
+                }
             }
         });
     }))
