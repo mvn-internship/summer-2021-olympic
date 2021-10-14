@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserMatchController;
+use App\Http\Controllers\Api\MatchSoccerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('staffs', UserMatchController::class, [
+    'as' => 'api'
+]);
+Route::apiResource('matches', MatchSoccerController::class, [
+    'as' => 'api'
+]);

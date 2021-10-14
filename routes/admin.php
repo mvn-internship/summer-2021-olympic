@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatchSoccerController;
+use App\Http\Controllers\UserMatchController;
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -22,4 +23,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('matches', MatchSoccerController::class);
+    Route::get('/matches/{id}/results', [MatchSoccerController::class, 'result'])->name('matches.results');
+    Route::resource('staffs', UserMatchController::class);
 });

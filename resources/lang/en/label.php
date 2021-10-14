@@ -1,5 +1,4 @@
 <?php
-
 return [
     'auth' => [
         'welcome' => 'Welcome Back!',
@@ -24,7 +23,7 @@ return [
         'copy-right' => 'Copyright © Your Website 2019'
     ],
     'match' => [
-        'Match' => 'Match',
+        'match' => 'Match',
         'manage' => 'Manage Match',
         'match-code' => 'Match Code',
     ],
@@ -37,4 +36,13 @@ return [
     'group' => [
         'group' => 'Group',
     ],
+    'add_role' => 'Add role for staff in match',
+    'user' => 'User',
+    'role' => 'Role',
+    'name' => 'Name',
+    'action' => 'Action',
+    'staff' => 'Staff',
+    'list' => 'List',
+    'add' => 'Add',
+    'manage_staff' => 'Manage Staff',
 ];

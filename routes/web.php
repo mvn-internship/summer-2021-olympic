@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserMatchController;
 use App\Http\Controllers\Auth\UserLoginController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,9 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home');
 Route::group(['middleware' => ['auth', 'role.user']], function () {
     Route::get('/profile', [HomeController::class, 'profile']);
 });
+
+// Route::group(['prefix' => 'admin'] , function () {
+//     Route::resource('staff', UserMatchController::class);
+// });
+
+//USER

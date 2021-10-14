@@ -9,6 +9,13 @@ class MatchSoccer extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'rank_id',
+        'match_code',
+        'tournament_id',
+        'group_id',
+    ];
 
     public function rank()
     {
