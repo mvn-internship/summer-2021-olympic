@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserMatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('users', App\Http\Controllers\API\UserController::class);
+Route::apiResource('staffs', UserMatchController::class, [
+    'as' => 'api'
+]);

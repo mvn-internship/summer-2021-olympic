@@ -6,7 +6,7 @@ use App\Http\Controllers\PermissonController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserMatchController;
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -24,6 +24,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin'], 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('staffs', UserMatchController::class);
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissons', PermissonController::class);
