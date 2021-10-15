@@ -10,6 +10,14 @@ class MedalPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class MedalPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-medal', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class MedalPolicy
      */
     public function view(User $user, Medal $medal)
     {
-        //
+        return in_array('view-medal', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class MedalPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-medal', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class MedalPolicy
      */
     public function update(User $user, Medal $medal)
     {
-        //
+        return in_array('update-medal', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class MedalPolicy
      */
     public function delete(User $user, Medal $medal)
     {
-        //
+        return in_array('delete-medal', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class MedalPolicy
      */
     public function restore(User $user, Medal $medal)
     {
-        //
+        return in_array('restore-medal', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class MedalPolicy
      */
     public function forceDelete(User $user, Medal $medal)
     {
-        //
+        return in_array('forceDelete-medal', $this->permissions);
     }
 }

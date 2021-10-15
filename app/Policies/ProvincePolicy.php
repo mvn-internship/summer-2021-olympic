@@ -10,6 +10,14 @@ class ProvincePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class ProvincePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-province', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class ProvincePolicy
      */
     public function view(User $user, Province $province)
     {
-        //
+        return in_array('view-province', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class ProvincePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-province', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class ProvincePolicy
      */
     public function update(User $user, Province $province)
     {
-        //
+        return in_array('update-province', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class ProvincePolicy
      */
     public function delete(User $user, Province $province)
     {
-        //
+        return in_array('delete-province', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class ProvincePolicy
      */
     public function restore(User $user, Province $province)
     {
-        //
+        return in_array('restore-province', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class ProvincePolicy
      */
     public function forceDelete(User $user, Province $province)
     {
-        //
+        return in_array('forceDelete-province', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class MatchAnalysicPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class MatchAnalysicPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class MatchAnalysicPolicy
      */
     public function view(User $user, MatchAnalysic $matchAnalysic)
     {
-        //
+        return in_array('view-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class MatchAnalysicPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class MatchAnalysicPolicy
      */
     public function update(User $user, MatchAnalysic $matchAnalysic)
     {
-        //
+        return in_array('update-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class MatchAnalysicPolicy
      */
     public function delete(User $user, MatchAnalysic $matchAnalysic)
     {
-        //
+        return in_array('delete-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class MatchAnalysicPolicy
      */
     public function restore(User $user, MatchAnalysic $matchAnalysic)
     {
-        //
+        return in_array('restore-matchAnalysis', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class MatchAnalysicPolicy
      */
     public function forceDelete(User $user, MatchAnalysic $matchAnalysic)
     {
-        //
+        return in_array('forceDelete-matchAnalysis', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class SchedulePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class SchedulePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-schedule', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class SchedulePolicy
      */
     public function view(User $user, schedule $schedule)
     {
-        //
+        return in_array('view-schedule', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class SchedulePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-schedule', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class SchedulePolicy
      */
     public function update(User $user, schedule $schedule)
     {
-        //
+        return in_array('update-schedule', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class SchedulePolicy
      */
     public function delete(User $user, schedule $schedule)
     {
-        //
+        return in_array('delete-schedule', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class SchedulePolicy
      */
     public function restore(User $user, schedule $schedule)
     {
-        //
+        return in_array('restore-schedule', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class SchedulePolicy
      */
     public function forceDelete(User $user, schedule $schedule)
     {
-        //
+        return in_array('forceDelete-schedule', $this->permissions);
     }
 }

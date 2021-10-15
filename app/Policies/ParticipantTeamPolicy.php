@@ -10,6 +10,14 @@ class ParticipantTeamPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class ParticipantTeamPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-participantTeam', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class ParticipantTeamPolicy
      */
     public function view(User $user, ParticipantTeam $participantTeam)
     {
-        //
+        return in_array('view-participantTeam', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class ParticipantTeamPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-participantTeam', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class ParticipantTeamPolicy
      */
     public function update(User $user, ParticipantTeam $participantTeam)
     {
-        //
+        return in_array('update-participantTeam', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class ParticipantTeamPolicy
      */
     public function delete(User $user, ParticipantTeam $participantTeam)
     {
-        //
+        return in_array('delete-participantTeam', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class ParticipantTeamPolicy
      */
     public function restore(User $user, ParticipantTeam $participantTeam)
     {
-        //
+        return in_array('restore-participantTeam', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class ParticipantTeamPolicy
      */
     public function forceDelete(User $user, ParticipantTeam $participantTeam)
     {
-        //
+        return in_array('forceDelete-participantTeam', $this->permissions);
     }
 }

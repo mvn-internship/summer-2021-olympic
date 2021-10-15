@@ -2,13 +2,21 @@
 
 namespace App\Policies;
 
-use App\Models\Match;
+use App\Models\MatchSoccer;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MatchPolicy
+class MatchSoccerPolicy
 {
     use HandlesAuthorization;
+
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
 
     /**
      * Determine whether the user can view any models.
@@ -18,19 +26,19 @@ class MatchPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-matchSoccer', $this->permissions);
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Match  $match
+     * @param  \App\Models\MatchSoccer  $matchSoccer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Match $match)
+    public function view(User $user, MatchSoccer $matchSoccer)
     {
-        //
+        return in_array('view-matchSoccer', $this->permissions);
     }
 
     /**
@@ -41,54 +49,54 @@ class MatchPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-matchSoccer', $this->permissions);
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Match  $match
+     * @param  \App\Models\MatchSoccer  $matchSoccer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Match $match)
+    public function update(User $user, MatchSoccer $matchSoccer)
     {
-        //
+        return in_array('update-matchSoccer', $this->permissions);
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Match  $match
+     * @param  \App\Models\MatchSoccer  $matchSoccer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Match $match)
+    public function delete(User $user, MatchSoccer $matchSoccer)
     {
-        //
+        return in_array('delete-matchSoccer', $this->permissions);
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Match  $match
+     * @param  \App\Models\MatchSoccer  $matchSoccer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Match $match)
+    public function restore(User $user, MatchSoccer $matchSoccer)
     {
-        //
+        return in_array('restore-matchSoccer', $this->permissions);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Match  $match
+     * @param  \App\Models\MatchSoccer  $matchSoccer
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Match $match)
+    public function forceDelete(User $user, MatchSoccer $matchSoccer)
     {
-        //
+        return in_array('forceDelete-matchSoccer', $this->permissions);
     }
 }

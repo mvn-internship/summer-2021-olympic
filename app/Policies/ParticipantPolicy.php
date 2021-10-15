@@ -10,6 +10,14 @@ class ParticipantPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class ParticipantPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-participant', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class ParticipantPolicy
      */
     public function view(User $user, Participant $participant)
     {
-        //
+        return in_array('view-participant', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class ParticipantPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-participant', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class ParticipantPolicy
      */
     public function update(User $user, Participant $participant)
     {
-        //
+        return in_array('update-participant', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class ParticipantPolicy
      */
     public function delete(User $user, Participant $participant)
     {
-        //
+        return in_array('delete-participant', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class ParticipantPolicy
      */
     public function restore(User $user, Participant $participant)
     {
-        //
+        return in_array('restore-participant', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class ParticipantPolicy
      */
     public function forceDelete(User $user, Participant $participant)
     {
-        //
+        return in_array('forceDelete-participant', $this->permissions);
     }
 }

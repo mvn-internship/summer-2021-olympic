@@ -2,11 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Country;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CountryPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +16,6 @@ class CountryPolicy
         $this->roles = $permissions['roles'];
         $this->permissions = $permissions['permissions'];
     }
-
     /**
      * Determine whether the user can view any models.
      *
@@ -26,77 +24,77 @@ class CountryPolicy
      */
     public function viewAny(User $user)
     {
-        return in_array('viewAny-country', $this->permissions);
+        return in_array('viewAny-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Country $country)
+    public function view(User $user, User $model)
     {
-        return in_array('view-country', $this->permissions);
+        return in_array('create-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $userW
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
-        return in_array('create-country', $this->permissions);
+        return in_array('create-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Country $country)
+    public function update(User $user, User $model)
     {
-        return in_array('update-country', $this->permissions);
+        return in_array('update-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Country $country)
+    public function delete(User $user, User $model)
     {
-        return in_array('delete-country', $this->permissions);
+        return in_array('update-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Country $country)
+    public function restore(User $user, User $model)
     {
-        return in_array('restore-country', $this->permissions);
+        return in_array('restore-user', $this->permissions);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Country $country)
+    public function forceDelete(User $user, User $model)
     {
-        return in_array('forceDelete-country', $this->permissions);
+        return in_array('forceDelete-user', $this->permissions);
     }
 }

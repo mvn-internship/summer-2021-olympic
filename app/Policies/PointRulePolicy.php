@@ -10,6 +10,14 @@ class PointRulePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class PointRulePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-pointRule', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class PointRulePolicy
      */
     public function view(User $user, PointRule $pointRule)
     {
-        //
+        return in_array('view-pointRule', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class PointRulePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-pointRule', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class PointRulePolicy
      */
     public function update(User $user, PointRule $pointRule)
     {
-        //
+        return in_array('update-pointRule', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class PointRulePolicy
      */
     public function delete(User $user, PointRule $pointRule)
     {
-        //
+        return in_array('delete-pointRule', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class PointRulePolicy
      */
     public function restore(User $user, PointRule $pointRule)
     {
-        //
+        return in_array('restore-pointRule', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class PointRulePolicy
      */
     public function forceDelete(User $user, PointRule $pointRule)
     {
-        //
+        return in_array('forceDelete-pointRule', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class PenatlyCardPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class PenatlyCardPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-penaltyCard', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class PenatlyCardPolicy
      */
     public function view(User $user, PenatlyCard $penatlyCard)
     {
-        //
+        return in_array('view-penaltyCard', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class PenatlyCardPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-penaltyCard', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class PenatlyCardPolicy
      */
     public function update(User $user, PenatlyCard $penatlyCard)
     {
-        //
+        return in_array('update-penaltyCard', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class PenatlyCardPolicy
      */
     public function delete(User $user, PenatlyCard $penatlyCard)
     {
-        //
+        return in_array('delete-penaltyCard', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class PenatlyCardPolicy
      */
     public function restore(User $user, PenatlyCard $penatlyCard)
     {
-        //
+        return in_array('restore-penaltyCard', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class PenatlyCardPolicy
      */
     public function forceDelete(User $user, PenatlyCard $penatlyCard)
     {
-        //
+        return in_array('forceDelete-penaltyCard', $this->permissions);
     }
 }

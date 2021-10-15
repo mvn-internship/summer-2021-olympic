@@ -10,6 +10,14 @@ class CompetitionTypePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class CompetitionTypePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-competitionType', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class CompetitionTypePolicy
      */
     public function view(User $user, CompetitionType $competitionType)
     {
-        //
+        return in_array('view-competitionType', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class CompetitionTypePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-competitionType', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class CompetitionTypePolicy
      */
     public function update(User $user, CompetitionType $competitionType)
     {
-        //
+        return in_array('update-competitionType', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class CompetitionTypePolicy
      */
     public function delete(User $user, CompetitionType $competitionType)
     {
-        //
+        return in_array('delete-competitionType', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class CompetitionTypePolicy
      */
     public function restore(User $user, CompetitionType $competitionType)
     {
-        //
+        return in_array('restore-competitionType', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class CompetitionTypePolicy
      */
     public function forceDelete(User $user, CompetitionType $competitionType)
     {
-        //
+        return in_array('forceDelete-competitionType', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class TournamentPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class TournamentPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-tournament', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class TournamentPolicy
      */
     public function view(User $user, Tournament $tournament)
     {
-        //
+        return in_array('view-tournament', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class TournamentPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-tournament', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class TournamentPolicy
      */
     public function update(User $user, Tournament $tournament)
     {
-        //
+        return in_array('update-tournament', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class TournamentPolicy
      */
     public function delete(User $user, Tournament $tournament)
     {
-        //
+        return in_array('delete-tournament', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class TournamentPolicy
      */
     public function restore(User $user, Tournament $tournament)
     {
-        //
+        return in_array('restore-tournament', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class TournamentPolicy
      */
     public function forceDelete(User $user, Tournament $tournament)
     {
-        //
+        return in_array('forceDelete-tournament', $this->permissions);
     }
 }

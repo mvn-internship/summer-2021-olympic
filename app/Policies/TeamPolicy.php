@@ -10,6 +10,14 @@ class TeamPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class TeamPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-team', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $team)
     {
-        //
+        return in_array('view-team', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-team', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team)
     {
-        //
+        return in_array('update-team', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team)
     {
-        //
+        return in_array('delete-team', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class TeamPolicy
      */
     public function restore(User $user, Team $team)
     {
-        //
+        return in_array('restore-team', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class TeamPolicy
      */
     public function forceDelete(User $user, Team $team)
     {
-        //
+        return in_array('forceDelete-team', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class PlacePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class PlacePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-place', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class PlacePolicy
      */
     public function view(User $user, Place $place)
     {
-        //
+        return in_array('view-place', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class PlacePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-place', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class PlacePolicy
      */
     public function update(User $user, Place $place)
     {
-        //
+        return in_array('update-place', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class PlacePolicy
      */
     public function delete(User $user, Place $place)
     {
-        //
+        return in_array('delete-place', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class PlacePolicy
      */
     public function restore(User $user, Place $place)
     {
-        //
+        return in_array('restore-place', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class PlacePolicy
      */
     public function forceDelete(User $user, Place $place)
     {
-        //
+        return in_array('forceDelete-place', $this->permissions);
     }
 }

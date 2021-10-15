@@ -10,6 +10,14 @@ class OrganizationTournamentPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class OrganizationTournamentPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-organizationTournament', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class OrganizationTournamentPolicy
      */
     public function view(User $user, OrganizationTournament $organizationTournament)
     {
-        //
+        return in_array('view-organizationTournament', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class OrganizationTournamentPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-organizationTournament', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class OrganizationTournamentPolicy
      */
     public function update(User $user, OrganizationTournament $organizationTournament)
     {
-        //
+        return in_array('update-organizationTournament', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class OrganizationTournamentPolicy
      */
     public function delete(User $user, OrganizationTournament $organizationTournament)
     {
-        //
+        return in_array('delete-organizationTournament', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class OrganizationTournamentPolicy
      */
     public function restore(User $user, OrganizationTournament $organizationTournament)
     {
-        //
+        return in_array('restore-organizationTournament', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class OrganizationTournamentPolicy
      */
     public function forceDelete(User $user, OrganizationTournament $organizationTournament)
     {
-        //
+        return in_array('forceDelete-organizationTournament', $this->permissions);
     }
 }

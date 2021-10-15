@@ -10,6 +10,14 @@ class DistrictPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class DistrictPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-district', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class DistrictPolicy
      */
     public function view(User $user, District $district)
     {
-        //
+        return in_array('view-district', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class DistrictPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-district', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class DistrictPolicy
      */
     public function update(User $user, District $district)
     {
-        //
+        return in_array('update-district', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class DistrictPolicy
      */
     public function delete(User $user, District $district)
     {
-        //
+        return in_array('update-district', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class DistrictPolicy
      */
     public function restore(User $user, District $district)
     {
-        //
+        return in_array('restore-district', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class DistrictPolicy
      */
     public function forceDelete(User $user, District $district)
     {
-        //
+        return in_array('forceDelete-district', $this->permissions);
     }
 }
