@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Tournament;
 use Illuminate\Http\Request;
+use App\Models\Team;
+use Illuminate\Support\Facades\DB;
+
 
 class TournamentController extends Controller
 {
@@ -15,6 +18,9 @@ class TournamentController extends Controller
     public function index()
     {
         //
+        $listTournaments = Tournament::withCount('organizationTournaments')->orderBy('end_date', 'desc')->get();
+        
+        return view('admin.pages.tournament.list', compact('listTournaments'));
     }
 
     /**
@@ -25,6 +31,7 @@ class TournamentController extends Controller
     public function create()
     {
         //
+        return view('admin.pages.tournament.create');
     }
 
     /**
@@ -55,9 +62,20 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit($id)
     {
         //
+        DB::enableQueryLog();
+        $tournamentEdit = Tournament::with('organizationTournaments.team')->find($id);
+        $idTeamSelected = [];
+        foreach ($tournamentEdit->organizationTournaments as $organizationTournament) {
+            array_push($idTeamSelected, $organizationTournament->team->id);
+        }
+
+        $teams = Team::select(['id', 'name'])->whereNotIn('id', $idTeamSelected)->get();
+
+        return view('admin.pages.tournament.edit', compact('tournamentEdit', 'teams'));
+
     }
 
     /**
@@ -78,8 +96,14 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy($id)
     {
         //
+        $tournamentDelete = Tournament::with('organizationTournaments')->find($id);
+        foreach ($tournamentDelete->organizationTournaments as $organizationTournament){
+            $organizationTournament->delete();
+        }
+        $tournamentDelete->delete();
+        return back()->with(['success' => __('message.delete_tournamet_success')]);
     }
 }
