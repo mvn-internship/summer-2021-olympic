@@ -22,7 +22,7 @@ class CheckAdminSideRole
             $pass = false;
             $roles = $request->user()->roles;
             foreach ($roles as $role) {
-                if (in_array($role->name, StaticArray::$admin_side)) {
+                if (in_array($role->name, config('constants.roles.admin_sides'))) {
                     $pass = true;
                 }
             }

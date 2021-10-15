@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">{{ __('label.side-bar.app-name') }}</div>
     </a>
 
     <!-- Divider -->
@@ -14,16 +14,24 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>{{ __('label.side-bar.dashboard') }}</span></a>
+    </li>
+
+    <li class="nav-item active">
         <a class="nav-link" href="{{route('admin.tournament')}}">
             <i class="fas fa-futbol"></i>
             <span>{{ __('label.tournament') }}</span>
         </a>
     </li>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
 </ul>
 <!-- End of Sidebar -->

@@ -22,7 +22,7 @@ class CheckUserSideRole
             $pass = false;
             $roles = $request->user()->roles;
             foreach ($roles as $role) {
-                if (in_array($role->name, StaticArray::$user_side)) {
+                if (in_array($role->name, config('constants.roles.user_sides'))) {
                     $pass = true;
                 }
             }
