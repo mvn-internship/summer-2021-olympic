@@ -18,7 +18,7 @@ class CheckUserSideRole
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()) {
+        if (Auth::check()) {
             $pass = false;
             $roles = $request->user()->roles;
             foreach ($roles as $role) {

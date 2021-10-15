@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        if (Auth::user()) {
+        if (Auth::check()) {
             return redirectAuthenticatedRoute();
         }
 
