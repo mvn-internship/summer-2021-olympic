@@ -19,6 +19,36 @@ return [
     'side-bar' => [
         'app-name' => 'SC Admin',
         'dashboard' => 'Dashboard',
+        'permission' => 'Manage Permissions',
+        'user' => 'Manage Users',
+        'role' => 'Manage Roles',
+    ],
+    'pages' => [
+        'user' => [
+            'create' => 'Create User',
+            'edit' => 'Edit User',
+            'list' => 'List Users',
+            'form' => 'Form Users'
+
+        ],
+    ],
+    'form' => [
+        'create' => 'Create',
+        'save' => 'Save',
+        'name' => 'Name',
+        'email' => 'Email',
+        'address' => 'Address',
+        'phone' => 'Phone',
+        'password' => 'Password',
+        'status' => 'Status',
+        'email_verified_at' => 'Email Verified At',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
+        'close' => 'Close',
+        'action' => 'Action',
+        'role' => 'Role',
+        'id' => 'ID',
+
     ],
     'footer' => [
         'copy-right' => 'Copyright © Your Website 2019'
