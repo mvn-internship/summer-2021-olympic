@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\RoleRequest;
+use App\Http\Resources\Permission;
+use App\Http\Resources\Role as ResourcesRole;
+use App\Models\Permisson;
+use App\Models\Role;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,11 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permisson::all();
+        return $this->handleResponse(
+            Permission::collection($permissions),
+            'Permissions have been retrieved!'
+        );
     }
 
     /**
@@ -23,9 +30,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+        $role = Role::create(['name' => $request->name]);
+        $role->permissions()->attach($request->permissions);
+        return $this->handleResponse(new ResourcesRole($role), 'Role created!');
     }
 
     /**
@@ -36,7 +45,17 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        $permissions = Permisson::all();
+        $rolePermissions = $role->permissions;
+        return $this->handleResponse(
+            [
+                new ResourcesRole($role),
+                Permission::collection($permissions),
+                $rolePermissions,
+            ],
+            'Role detail'
+        );
     }
 
     /**
@@ -46,9 +65,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        //
+        $role = Role::find($id);
+        $role->fill($request->input())->save();
+        $role->permissions()->sync($request->permissions);
+        return $this->handleResponse(new ResourcesRole($role), 'Role successfully updated!');
     }
 
     /**
@@ -59,6 +81,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+        $role->permissions()->detach();
+        $role->delete();
+        return $this->handleResponse(new ResourcesRole($role), 'Role delete successfully!');
     }
 }

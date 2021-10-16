@@ -31,7 +31,6 @@ $(document).ready(function () {
             url: _url,
             type: "GET",
             success: function (response) {
-                console.log(response.data);
                 if (response.success) {
                     $("#user_id").val(response.data[0].id);
                     $("#name").val(response.data[0].name);
@@ -53,7 +52,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         let _url = `/api/users/${id}`;
         let _token = $('meta[name="csrf-token"]').attr("content");
-        var row = $(this).closest("tr").index();
+        var row = $(this).closest("tr");
 
         $.ajax({
             url: _url,
@@ -146,7 +145,6 @@ $(document).ready(function () {
         if (roleSelected) {
             roleSelected.forEach((e) => selectedArray.push(e.name));
         }
-        console.log(selectedArray);
         data.forEach((element) => {
             if (selectedArray) {
                 selected = selectedArray.includes(element.name);
@@ -210,8 +208,6 @@ $(document).ready(function () {
     }
 
     function updateTableRow(response, currentIndex) {
-        console.log("eidt");
-        // Update
         var commonVar = initialVar(response.data);
         var data = [
             response.data.id,
@@ -233,7 +229,6 @@ $(document).ready(function () {
                 response.data.id +
                 '"><i class="fas fa-edit"></i></button>',
         ];
-        console.log(currentIndex);
         table.row(currentIndex).data(data).invalidate().draw();
     }
 

@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\UserMatchController;
 */
 
 Route::apiResource('users', App\Http\Controllers\API\UserController::class);
+Route::apiResource('roles', App\Http\Controllers\API\RoleController::class);
+Route::apiResource('permissions', App\Http\Controllers\API\PermissionController::class);
 Route::apiResource('staffs', UserMatchController::class, [
     'as' => 'api'
 ]);

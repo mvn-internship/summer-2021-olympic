@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Participant::factory(10)->create();
-        \App\Models\Permisson::factory(10)->create();
+        $this->call(PermissionSeeder::class);
         $data = [
             ['name' => 'admin'],
             ['name' => 'client'],

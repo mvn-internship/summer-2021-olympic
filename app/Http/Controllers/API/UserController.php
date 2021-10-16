@@ -6,7 +6,6 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\Role as ResourcesRole;
 use App\Http\Resources\User as ResourcesUser;
 use App\Models\Role;
-use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 

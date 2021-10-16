@@ -26,7 +26,7 @@ class ClubPolicy
      */
     public function viewAny(User $user)
     {
-        return in_array('viewAny-user', $this->permissions);
+        return in_array('viewAny-club', $this->permissions);
     }
 
     /**
@@ -38,7 +38,7 @@ class ClubPolicy
      */
     public function view(User $user, Club $club)
     {
-        return in_array('view-user', $this->permissions);
+        return in_array('view-club', $this->permissions);
     }
 
     /**
@@ -49,7 +49,7 @@ class ClubPolicy
      */
     public function create(User $user)
     {
-        return in_array('create-user', $this->permissions);
+        return in_array('create-club', $this->permissions);
     }
 
     /**
@@ -61,7 +61,7 @@ class ClubPolicy
      */
     public function update(User $user, Club $club)
     {
-        return in_array('update-user', $this->permissions);
+        return in_array('update-club', $this->permissions);
     }
 
     /**
@@ -73,7 +73,7 @@ class ClubPolicy
      */
     public function delete(User $user, Club $club)
     {
-        return in_array('delete-user', $this->permissions);
+        return in_array('delete-club', $this->permissions);
     }
 
     /**
@@ -85,7 +85,7 @@ class ClubPolicy
      */
     public function restore(User $user, Club $club)
     {
-        return in_array('restore-user', $this->permissions);
+        return in_array('restore-club', $this->permissions);
     }
 
     /**
@@ -97,6 +97,6 @@ class ClubPolicy
      */
     public function forceDelete(User $user, Club $club)
     {
-        return in_array('forceDelete-user', $this->permissions);
+        return in_array('forceDelete-club', $this->permissions);
     }
 }

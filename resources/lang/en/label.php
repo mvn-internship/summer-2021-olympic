@@ -28,7 +28,18 @@ return [
             'edit' => 'Edit User',
             'list' => 'List Users',
             'form' => 'Form Users'
-
+        ],
+        'role' => [
+            'create' => 'Create Role',
+            'edit' => 'Edit Role',
+            'list' => 'List Roles',
+            'form' => 'Form Roles'
+        ],
+        'permission' => [
+            'create' => 'Create Permission',
+            'edit' => 'Edit Permission',
+            'list' => 'List Permissions',
+            'form' => 'Form Permissions'
         ],
     ],
     'form' => [
@@ -47,6 +58,8 @@ return [
         'action' => 'Action',
         'role' => 'Role',
         'id' => 'ID',
+        'display_name' => 'Display Name',
+        'permissions' => 'Permissions'
 
     ],
     'footer' => [
