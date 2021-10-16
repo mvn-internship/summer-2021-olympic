@@ -27,8 +27,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">{{ __('label.manage_staff') }}</h6>
-                <a class="collapse-item" href="{{ route('staffs.index') }}">{{ __('label.list') }}</a>
-                <a class="collapse-item" href="{{ route('staffs.create') }}">{{ __('label.add') }}</a>
+                <a class="collapse-item" href="{{ route('admin.staffs.index') }}">{{ __('label.list') }}</a>
+                <a class="collapse-item" href="{{ route('admin.staffs.create') }}">{{ __('label.add') }}</a>
             </div>
         </div>
     </li>
