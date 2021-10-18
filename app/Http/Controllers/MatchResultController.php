@@ -14,8 +14,8 @@ class MatchResultController extends Controller
      */
     public function showAnalysis()
     {
-        $list_analysis = MatchResult::with('matchSoccer.rank', 'team')->orderBy('team_point', 'desc')->get();
-        return view('admin.pages.analysis.list', compact('list_analysis'));
+        $matchResults = MatchResult::with('matchSoccer.rank', 'team')->orderBy('team_point', 'desc')->get();
+        return view('admin.pages.analysis.list', compact('matchResults'));
     }
     
     /**

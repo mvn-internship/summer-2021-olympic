@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($list_analysis as $key => $analysis)
+                    @foreach($matchResults as $key => $analysis)
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $analysis->matchSoccer->name }}</td>
