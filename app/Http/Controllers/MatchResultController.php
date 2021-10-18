@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class MatchResultController extends Controller
 {
+    public function showCompetitionRanking()
+    {
+        return view('user.pages.matches.ranking');
+    }
+
     /**
      * Display a listing of the resource.
      *
