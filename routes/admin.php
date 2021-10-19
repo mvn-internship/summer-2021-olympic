@@ -25,7 +25,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'role.admin'], 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('staffs', UserMatchController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('roles', RoleController::class);
-    Route::resource('permissons', PermissonController::class);
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
+    Route::get('permissons', [PermissonController::class, 'index'])->name('permissons.index');
 });

@@ -42,21 +42,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-
-        // $data = [
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'address' => $request->address,
-        //     'phone' => $request->phone,
-        //     'remember_token' => Str::random(10),
-        //     'status' => 1,
-        // ];
-        // if ($request->filled('password')) {
-        //     $data += ['password' => Hash::make($request->password)];
-        // }
-        // $user = User::updateOrCreate(['id' => $request->id], $data);
-
-        // return response()->json(['status' => 200, 'message' => 'User save successfully', 'data' => $user], 200);
+        //
     }
 
     /**
@@ -78,8 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // $user = User::find($id);
-        // return response()->json(['status' => 200, 'data' => $user], 200);
+        //
     }
 
     /**
@@ -102,7 +87,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // $post = User::find($id)->delete();
-        // return response()->json(['success' => 'User Deleted successfully']);
+        //
     }
 }
