@@ -12,6 +12,18 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getTeamCreateTournament()
+    {
+        //
+        $teams = Team::select(['id', 'name'])->get();
+        return view('admin.pages.tournament.create', compact('teams'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //

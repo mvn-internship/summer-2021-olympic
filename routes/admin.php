@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\TeamController;
+
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PermissonController;
 use App\Http\Controllers\RoleController;
@@ -24,8 +27,18 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin'], 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    // Staff
     Route::resource('staffs', UserMatchController::class);
+
+    // Permission
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
     Route::get('permissons', [PermissonController::class, 'index'])->name('permissons.index');
+
+    // Tournament
+    Route::get('/tournament', [TournamentController::class, 'index'])->name('tournament');
+    Route::get('/createTournament', [TournamentController::class, 'create'])->name('createTournament');
+    Route::get('/createTournament', [TeamController::class, 'getTeamCreateTournament'])->name('createTournament');
+    Route::get('/editTournament/{id?}', [TournamentController::class, 'edit'])->name('editTournament');
+    Route::delete('deleteTournament/{id}', [TournamentController::class, 'destroy'])->name('deleteTournament');
 });

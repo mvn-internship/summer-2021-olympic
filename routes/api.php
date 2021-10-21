@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserMatchController;
+use App\Http\Controllers\Api\TournamentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +18,12 @@ use App\Http\Controllers\Api\UserMatchController;
 Route::apiResource('users', App\Http\Controllers\API\UserController::class);
 Route::apiResource('roles', App\Http\Controllers\API\RoleController::class);
 Route::apiResource('permissions', App\Http\Controllers\API\PermissionController::class);
+
+// Staff
 Route::apiResource('staffs', UserMatchController::class, [
     'as' => 'api'
 ]);
+
+// Tournament
+Route::post('/storeTournament', [TournamentController::class, 'store'])->name('admin.storeTournament');
+Route::put('/updateTournament/{id?}', [TournamentController::class, 'update'])->name('admin.updateTournament');

@@ -64,6 +64,13 @@
         </a>
     </li>
 
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.tournament') }}">
+            <i class="fas fa-futbol"></i>
+            <span>{{ __('label.tournament') }}</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
