@@ -126,7 +126,6 @@
                     team: $("#team").val(),
                 };
                 var id = $("#id").val();
-                debugger;
                 $.ajax({
                     url: "/api/updateTournament/"+id,
                     dataType: "html",

@@ -115,7 +115,6 @@
                     end_date: $("#endDate").val(),
                     team: $("#team").val(),
                 };
-                debugger;
                 $.ajax({
                     url: "/api/storeTournament",
                     dataType: "html",
