@@ -173,12 +173,11 @@ $(document).ready(function () {
     }
 
     function createTableRow(response) {
-        var maxRowIndex = table.rows().data().length;
+        var newRowIndex = table.rows().data().length;
         var commonVar = initialVar(response.data);
         var tr =
             '<tr id="row_' +
-            maxRowIndex +
-            1 +
+            newRowIndex +
             '"><td>' +
             response.data.id +
             "</td><td>" +
