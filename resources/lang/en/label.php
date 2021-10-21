@@ -1,5 +1,4 @@
 <?php
-
 return [
     'analysis' => 'Analysis Result',
     'match' => 'Match',
@@ -29,5 +28,15 @@ return [
     ],
     'footer' => [
         'copy-right' => 'Copyright © Your Website 2019'
-    ]
+    ],
+    'add_role' => 'Add role for staff in match',
+    'user' => 'User',
+    'match' => 'Match',
+    'role' => 'Role',
+    'name' => 'Name',
+    'action' => 'Action',
+    'staff' => 'Staff',
+    'list' => 'List',
+    'add' => 'Add',
+    'manage_staff' => 'Manage Staff',
 ];

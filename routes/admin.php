@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatchResultController;
 
+use App\Http\Controllers\UserMatchController;
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -24,4 +25,5 @@ Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('admin.listAnalysis');
 
+    Route::resource('staffs', UserMatchController::class);
 });
