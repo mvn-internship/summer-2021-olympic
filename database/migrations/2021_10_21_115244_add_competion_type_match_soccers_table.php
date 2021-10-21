@@ -26,7 +26,7 @@ class AddCompetionTypeMatchSoccersTable extends Migration
     public function down()
     {
         Schema::table('match_soccers', function (Blueprint $table) {
-            $table->integer('competition_type')->nullable();
+            $table->dropColumn('competition_type')->nullable();
         });
     }
 }

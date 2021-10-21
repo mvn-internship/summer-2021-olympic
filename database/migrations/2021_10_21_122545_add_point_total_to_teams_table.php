@@ -26,7 +26,7 @@ class AddPointTotalToTeamsTable extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->integer('point_total')->nullable();
+            $table->dropColumn('point_total')->nullable();
         });
     }
 }
