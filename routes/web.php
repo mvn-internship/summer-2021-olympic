@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserMatchController;
 use App\Http\Controllers\Auth\UserLoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MatchResultController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,11 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home');
 Route::group(['middleware' => ['auth', 'role.user']], function () {
     Route::get('/profile', [HomeController::class, 'profile']);
 });
+
+Route::get('/schedule', [ScheduleController::class, 'index'])->name('user.schedule');
+Route::get('/detailschedule', [ScheduleController::class, 'showsDetailSchedule'])->name('user.showsDetailSchedule');
+Route::get('/ranking', [MatchResultController::class, 'showCompetitionRanking'])->name('user.showCompetitionRanking');
+
 
 // Route::group(['prefix' => 'admin'] , function () {
 //     Route::resource('staff', UserMatchController::class);

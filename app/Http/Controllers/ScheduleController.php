@@ -15,6 +15,11 @@ class ScheduleController extends Controller
     public function index()
     {
         //
+        return view('user.pages.schedules.list');
+    }
+
+    public function showsDetailSchedule() {
+        return view('user.pages.schedules.detail');
     }
 
     /**
