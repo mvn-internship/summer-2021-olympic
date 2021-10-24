@@ -9,4 +9,14 @@ class Rank extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $table = 'ranks';
+    protected $fillable = [
+        'id',
+        'name',
+    ];
+
+    public function matchSoccers(){
+        return $this->hasMany(MatchSoccer::class);
+    }
 }

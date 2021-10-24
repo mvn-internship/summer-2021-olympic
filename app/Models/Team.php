@@ -9,4 +9,15 @@ class Team extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $table = 'teams';
+    protected $fillable = [
+        'id',
+        'name',
+    ];
+
+    public function matchResults()
+    {
+        return $this->hasMany(MatchResult::class, 'team_id');
+    }
 }
