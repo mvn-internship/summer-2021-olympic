@@ -19,4 +19,9 @@ class Team extends Model
     public function organizationTournaments(){
         return $this->hasMany(OrganizationTournament::class, 'teams_id', 'id');
     }
+    
+    public function matchResults()
+    {
+        return $this->hasMany(MatchResult::class, 'team_id');
+    }
 }

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserMatch;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\MatchSoccer;
+use DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\staffs\UpdateRequest;
+use App\Http\Requests\staffs\StoreRequest;
 
 class UserMatchController extends Controller
 {
@@ -13,8 +19,9 @@ class UserMatchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $userMatches = UserMatch::all();
+        return view('admin.pages.staffs.list', ['userMatches' => $userMatches]);
     }
 
     /**
@@ -24,7 +31,10 @@ class UserMatchController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::get();
+        $roles = Role::get();
+        $matchSoccers = MatchSoccer::get();
+        return view('admin.pages.staffs.add', ['users' => $users, 'roles' => $roles, 'matchSoccers' => $matchSoccers]);
     }
 
     /**
@@ -33,9 +43,16 @@ class UserMatchController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $userMatch = $request->all();
+
+        $check = UserMatch::create($userMatch);
+        if ($check) {
+            return back()->with('notification', __('message.success'));
+        }else {
+            return back()->with('notification',  __('message.error'));
+        }
     }
 
     /**
@@ -55,9 +72,12 @@ class UserMatchController extends Controller
      * @param  \App\Models\UserMatch  $userMatch
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserMatch $userMatch)
-    {
-        //
+    public function edit($id)
+    {     
+        $roles = Role::get();
+        $matchSoccers = MatchSoccer::get();
+        $userMatch = UserMatch::find($id);
+        return view('admin.pages.staffs.update', ['userMatch' => $userMatch,'roles' => $roles,'matchSoccers' => $matchSoccers]);
     }
 
     /**
@@ -67,9 +87,14 @@ class UserMatchController extends Controller
      * @param  \App\Models\UserMatch  $userMatch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserMatch $userMatch)
-    {
-        //
+    public function update(UpdateRequest $request, $id)
+    {   
+        $check = UserMatch::find($id)->update($request->all());
+        if ($check) {
+            return back()->with('notification', __('message.success'));
+        }else {
+            return back()->with('notification', __('message.error'));
+        }
     }
 
     /**
@@ -78,8 +103,13 @@ class UserMatchController extends Controller
      * @param  \App\Models\UserMatch  $userMatch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserMatch $userMatch)
+    public function destroy($id)
     {
-        //
+        $check = UserMatch::find($id)->delete();
+        if ($check) {
+            return back()->with('notification', __('message.success'));
+        }else {
+            return back()->with('notification',  __('message.error'));
+        }
     }
 }

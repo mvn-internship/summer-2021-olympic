@@ -1,5 +1,4 @@
 <?php
-
 return [
     'name' => 'Name',
     'add' => 'Add',
@@ -17,6 +16,13 @@ return [
     'back' => 'Back',
     'edit' => 'Edit',
     'this_tournament_not_exist' => 'This tournament does not exist',
+    'analysis' => 'Analysis Result',
+    'match' => 'Match',
+    'team' => 'Team',
+    'analysis' => 'Analysis Result',
+    'number' => 'No.',
+    'rank' => 'Rank',
+    'score' => 'Score',
     'auth' => [
         'welcome' => 'Welcome Back!',
         'login' => 'Login',
@@ -38,5 +44,15 @@ return [
     ],
     'footer' => [
         'copy-right' => 'Copyright © Your Website 2019'
-    ]
+    ],
+    'add_role' => 'Add role for staff in match',
+    'user' => 'User',
+    'match' => 'Match',
+    'role' => 'Role',
+    'name' => 'Name',
+    'action' => 'Action',
+    'staff' => 'Staff',
+    'list' => 'List',
+    'add' => 'Add',
+    'manage_staff' => 'Manage Staff',
 ];

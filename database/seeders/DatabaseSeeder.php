@@ -60,6 +60,20 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Participant::factory(10)->create();
         \App\Models\Permisson::factory(10)->create();
+        // \App\Models\Role::factory(1)->create();
+        $data=[
+    		[
+    			'name' => 'admin'
+    		],
+            [
+    			'name' => 'client'
+    		],
+            [
+    			'name' => 'referee'
+    		]
+    				
+    	];
+        DB::table('roles')->insert($data);
         \App\Models\Role::factory(1)->create();
 
         DB::table('role_users')->insert([
