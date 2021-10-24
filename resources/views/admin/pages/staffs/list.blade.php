@@ -20,7 +20,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('label.name') }}</th>
-                            <th>{{ __('label.match') }}</th>
+                            <th>{{ __('label.match.match') }}</th>
                             <th>{{ __('label.role') }}</th>
                             <th>{{ __('label.action') }}</th>
                         </tr>

@@ -34,7 +34,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="match">{{ __('label.match') }}</label>
+                    <label class="form-label" for="match">{{ __('label.match.match') }}</label>
                     <select class="form-control" id="match" name="match_id" >
                         @foreach ($matchSoccers as $matchSoccer)  
                         <option value="{{ $matchSoccer->id }}">{{ $matchSoccer->name }}</option>
@@ -55,7 +55,7 @@
                 <thead>
                   <tr>
                     <th scope="col">{{ __('label.user') }}</th>
-                    <th scope="col">{{ __('label.match') }}</th>
+                    <th scope="col">{{ __('label.match.match') }}</th>
                     <th scope="col">{{ __('label.role') }}</th>
                   </tr>
                 </thead>

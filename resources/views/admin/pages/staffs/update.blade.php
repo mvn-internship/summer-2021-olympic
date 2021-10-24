@@ -31,7 +31,7 @@
                     <input type="text" class="form-control" disabled value='{{ $userMatch->user->name }}'>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="match">{{ __('label.match') }}</label>
+                    <label class="form-label" for="match">{{ __('label.match.match') }}</label>
                     <select class="form-control" id="match" name="match_id" >
                         @foreach ($matchSoccers as $matchSoccer)  
                         <option value="{{ $matchSoccer->id }}"

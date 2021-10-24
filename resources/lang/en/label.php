@@ -22,9 +22,22 @@ return [
     'footer' => [
         'copy-right' => 'Copyright © Your Website 2019'
     ],
+    'match' => [
+        'match' => 'Match',
+        'manage' => 'Manage Match',
+        'match-code' => 'Match Code',
+    ],
+    'rank' => [
+        'rank' => 'Rank',
+    ],
+    'tournament' => [
+        'tournament' => 'Tournament',
+    ],
+    'group' => [
+        'group' => 'Group',
+    ],
     'add_role' => 'Add role for staff in match',
     'user' => 'User',
-    'match' => 'Match',
     'role' => 'Role',
     'name' => 'Name',
     'action' => 'Action',

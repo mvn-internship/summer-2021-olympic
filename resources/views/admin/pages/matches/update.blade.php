@@ -22,8 +22,10 @@
             @if (session('notification'))
             <div class="form-label" style="color: blue">{{ session('notification') }}</div>
             @endif
-            <p id='notification' class="form-label" style="color: blue"></p>
-            <form method="PUT" action="" id="form-update-staff">
+            <div id="notification" class="form-label" style="color: blue">
+               
+            </div>
+            <form method="PUT" action="{{ route('api.matches.update', $match->id) }}" id="form-update-match">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -31,7 +33,7 @@
                     <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="{{ $match->name }}"> 
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="rank">{{ __('label.rank') }}</label>
+                    <label class="form-label" for="rank">{{ __('label.rank.rank') }}</label>
                     <select class="form-control" id="rank" name="rank_id" >
                         @foreach ($ranks as $rank) 
                         <option value="{{ $rank->id }}"
@@ -43,11 +45,11 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="match-code">{{ __('label.match-code') }}</label>
+                    <label class="form-label" for="match-code">{{ __('label.match.match-code') }}</label>
                     <input type="text" class="form-control" id="match-code" placeholder="Match Code" name="match_code" value="{{ $match->match_code }}">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="tournament">{{ __('label.tournament') }}</label>
+                    <label class="form-label" for="tournament">{{ __('label.tournament.tournament') }}</label>
                     <select class="form-control" id="tournament" name="tournament_id" >
                         @foreach ($tournaments as $tournament) 
                         <option value="{{ $tournament->id }}"
@@ -58,7 +60,7 @@
                         @endforeach
                     </select>
                     <div class="mb-3">
-                        <label class="form-label" for="group">{{ __('label.group') }}</label>
+                        <label class="form-label" for="group">{{ __('label.group.group') }}</label>
                         <select class="form-control" id="group" name="group_id" >
                             @foreach ($groups as $group) 
                             <option value="{{ $group->id }}"
@@ -77,7 +79,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/admin/staff/update.js') }}"> </script>
+    <script src="{{ asset('js/admin/match/update.js') }}"> </script>
     <!-- Page level plugins -->
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>

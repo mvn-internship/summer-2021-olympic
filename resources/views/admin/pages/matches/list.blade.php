@@ -20,10 +20,10 @@
                     <thead>
                         <tr>
                             <th>{{ __('label.name') }}</th>
-                            <th>{{ __('label.rank') }}</th>
-                            <th>{{ __('label.match-code') }}</th>
-                            <th>{{ __('label.tournament') }}</th>
-                            <th>{{ __('label.group') }}</th>
+                            <th>{{ __('label.rank.rank') }}</th>
+                            <th>{{ __('label.match.match-code') }}</th>
+                            <th>{{ __('label.tournament.tournament') }}</th>
+                            <th>{{ __('label.group.group') }}</th>
                             <th>{{ __('label.action') }}</th>
                         </tr>
                     </thead>
@@ -39,9 +39,9 @@
                                 <a href="{{ route('matches.edit', $match->id) }}" class="btn btn-info btn-circle btn-sm">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
-                                <button class="btn btn-danger btn-circle btn-sm btn-delete" data-toggle="modal" data-url="" data-target="#exampleModal">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <a href="{{ route('matches.results', $match->id) }}" class="btn btn-success btn-circle btn-sm">
+                                    <i class="fas fa-poll" ></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -49,31 +49,7 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete confirmation?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <div class="modal-body">
-                <h3>Are you sure to delete?</h3>
-            </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form id="form-delete"  method="post" enctype="multipart/form" action="">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Yes, I'm sure" class="btn btn-danger">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-  
+    </div> 
 @endsection
 
 @section('scripts')
