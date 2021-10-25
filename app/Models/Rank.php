@@ -9,4 +9,8 @@ class Rank extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public function pointRule(Type $var = null)
+    {
+        return $this->belongsTo(PointRule::class, 'point_rule_id', 'id');
+    }
 }

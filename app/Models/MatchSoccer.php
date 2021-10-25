@@ -9,4 +9,8 @@ class MatchSoccer extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public function matchResults()
+    {
+        return $this->hasMany(MatchResult::class, 'match_id', 'id');
+    }
 }

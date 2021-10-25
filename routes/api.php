@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserMatchController;
+use App\Http\Controllers\Api\MatchResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('staffs', UserMatchController::class, [
+    'as' => 'api'
+]);
+Route::apiResource('rankings', MatchResultController::class, [
     'as' => 'api'
 ]);

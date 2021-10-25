@@ -9,4 +9,8 @@ class Individual extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public function rank()
+    {
+        return $this->belongsTo(Rank::class);
+    }
 }
