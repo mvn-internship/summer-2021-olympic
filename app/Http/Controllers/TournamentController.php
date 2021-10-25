@@ -6,6 +6,8 @@ use App\Models\Tournament;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Support\Facades\DB;
+use Exception;
+use App\Models\InvidualGroup;
 
 
 class TournamentController extends Controller
@@ -64,13 +66,11 @@ class TournamentController extends Controller
      */
     public function edit($id)
     {
-        //
-        DB::enableQueryLog();
         $tournamentEdit = Tournament::with('organizationTournaments.team')->find($id);
-        $idTeamSelected = [];
-        foreach ($tournamentEdit->organizationTournaments as $organizationTournament) {
-            array_push($idTeamSelected, $organizationTournament->team->id);
-        }
+        // $tournamentEdit = Tournament::find($id);
+        // DB::enableQueryLog();
+        $idTeamSelected = Tournament::find($id)->teams()->select('teams.id')->pluck('id')->toArray();
+        // dd($idTeamSelected);
 
         $teams = Team::select(['id', 'name'])->whereNotIn('id', $idTeamSelected)->get();
 
@@ -99,11 +99,34 @@ class TournamentController extends Controller
     public function destroy($id)
     {
         //
-        $tournamentDelete = Tournament::with('organizationTournaments')->find($id);
-        foreach ($tournamentDelete->organizationTournaments as $organizationTournament){
-            $organizationTournament->delete();
+        // foreach ($tournamentDelete->organizationTournaments as $organizationTournament){
+        //     $organizationTournament->delete();
+        // }
+        // dd($id);
+
+        DB::beginTransaction();
+        try {
+            $tournamentDelete = Tournament::with('organizationTournaments', 'individuals.invidualGroups')->find($id);
+            $idInvidualGroupDelete = [];
+            foreach ($tournamentDelete->individuals as $individuals){
+                // dd($individuals->invidual_groups);
+                if (!empty($individuals->invidualGroups)){
+                    foreach ($individuals->invidualGroups as $invidualGroup){
+                        array_push($idInvidualGroupDelete, $invidualGroup->id);
+                    }
+                }
+            }
+
+            $tournamentDelete->organizationTournaments->each->delete();
+            InvidualGroup::whereIn('id', $idInvidualGroupDelete)->delete();
+            $tournamentDelete->individuals->each->delete();
+            $tournamentDelete->delete();
+            DB::commit();
+            return redirect()->route('admin.tournament')->with(['success' => __('message.delete_tournamet_success')]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.tournament')->with(['fail' => __('message.delete_tournamet_fail')]);
         }
-        $tournamentDelete->delete();
-        return back()->with(['success' => __('message.delete_tournamet_success')]);
+        
     }
 }

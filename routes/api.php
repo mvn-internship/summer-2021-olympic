@@ -22,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('teams', [TeamController::class, 'index']);
-Route::post('/storeTournament', [TournamentController::class, 'store'])->name('admin.storeTournament');
-Route::put('/updateTournament/{id?}', [TournamentController::class, 'update'])->name('admin.updateTournament');
+Route::post('/tournaments', [TournamentController::class, 'store'])->name('admin.storeTournament');
+Route::put('/tournaments/{id?}', [TournamentController::class, 'update'])->name('admin.updateTournament');
 Route::apiResource('staffs', UserMatchController::class, [
     'as' => 'api'
 ]);

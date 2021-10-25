@@ -33,7 +33,7 @@
                 <div class="row gx-3 mb-3">
                     <div class="col-md-6">
                         <label class="required" for="name">{{ __('label.name_tournament') }}</label>
-                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter user name"
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter tournament name"
                             value="">
                         <span id="nameError"></span>
                     </div>
@@ -116,12 +116,12 @@
                     team: $("#team").val(),
                 };
                 $.ajax({
-                    url: "/api/storeTournament",
+                    url: "/api/tournaments",
                     dataType: "html",
                     type: "POST",
                     data: data,
                     success: function(response){ // What to do if we succeed
-                        window.location = '/admin/tournament?success=' + response;
+                        window.location = '/admin/tournaments?success=' + JSON.parse(response);
                     },
                     error: function (error) {
                         var repsponseError = JSON.parse(error.responseText);

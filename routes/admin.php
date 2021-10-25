@@ -26,11 +26,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/tournament', [TournamentController::class, 'index'])->name('admin.tournament');
-    Route::get('/createTournament', [TournamentController::class, 'create'])->name('admin.createTournament');
-    Route::get('/createTournament', [TeamController::class, 'getTeamCreateTournament'])->name('admin.createTournament');
-    Route::get('/editTournament/{id?}', [TournamentController::class, 'edit'])->name('admin.editTournament');
-    Route::delete('deleteTournament/{id}', [TournamentController::class, 'destroy'])->name('admin.deleteTournament');
+    Route::get('/tournaments', [TournamentController::class, 'index'])->name('admin.tournament');
+    Route::get('/tournaments/create', [TournamentController::class, 'create'])->name('admin.createTournament');
+    Route::get('/tournaments/team', [TeamController::class, 'getTeamCreateTournament'])->name('admin.createTournament');
+    Route::get('/tournaments/{id?}', [TournamentController::class, 'edit'])->name('admin.editTournament');
+    Route::delete('tournaments/{id}', [TournamentController::class, 'destroy'])->name('admin.deleteTournament');
 
     Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('admin.listAnalysis');
 

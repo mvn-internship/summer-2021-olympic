@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">{{ __('label.edit') }}</button>
-                    <a href="{{ route('admin.tournament') }}" class="btn btn-back">{{ __('label.add') }}</a>
+                    <a href="{{ route('admin.tournament') }}" class="btn btn-back">{{ __('label.back') }}</a>
                 </form>
             </div>
         </div>
@@ -127,12 +127,12 @@
                 };
                 var id = $("#id").val();
                 $.ajax({
-                    url: "/api/updateTournament/"+id,
+                    url: "/api/tournaments/"+id,
                     dataType: "html",
                     type: "PUT",
                     data: data,
                     success: function(response){ // What to do if we succeed
-                        window.location = '/admin/tournament?success=' + response;
+                        window.location = '/admin/tournaments?success=' + JSON.parse(response);
                     },
                     error: function (error) {
                         var repsponseError = JSON.parse(error.responseText);

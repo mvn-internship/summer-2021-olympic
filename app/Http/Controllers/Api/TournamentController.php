@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Tournament;
 use Illuminate\Support\Facades\Validator;
 use App\Models\OrganizationTournament;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class TournamentController extends Controller
 {
@@ -51,14 +53,26 @@ class TournamentController extends Controller
             $teamIds = $data['team'];
             $tournamentData = array('name' => $data['name'], 'start_date' => $startDate, 'end_date' => $endDate);
 
-            $tournament = Tournament::create($tournamentData);
-            foreach($teamIds as $teamId) {
-                $organizationTournament = array('tournament_id' => $tournament->id, 'teams_id' => $teamId);
-                OrganizationTournament::create($organizationTournament);
+            DB::beginTransaction();
+            try {
+                $tournament = Tournament::create($tournamentData);
+                foreach($teamIds as $teamId) {
+                    $organizationTournament[] = [
+                        'tournament_id' => $tournament->id, 
+                        'teams_id' => $teamId
+                    ];
+                }
+                OrganizationTournament::insert($organizationTournament);
+                
+                DB::commit();
+                $response = __('message.create_tournamet_success');
+                return response()->json($response, 200);
+            } catch (Exception $e) {
+                DB::rollBack();
+                
+                $response = __('message.create_tournamet_fail');
+                return response()->json($e, 422);
             }
-        
-            $response = __('message.create_tournamet_success');
-            return response()->json($response, 200);
         }
     }
 
@@ -105,17 +119,28 @@ class TournamentController extends Controller
             $teamIds = $data['team'];
             $tournamentData = array('name' => $data['name'], 'start_date' => $startDate, 'end_date' => $endDate);
 
-            Tournament::where('id', $id)->update($tournamentData);
+            DB::beginTransaction();
+            try {
+                Tournament::where('id', $id)->update($tournamentData);
 
-            OrganizationTournament::where('tournament_id', $id)->delete();
-
-            foreach($teamIds as $teamId) {
-                $organizationTournament = array('tournament_id' => $id, 'teams_id' => $teamId);
-                OrganizationTournament::create($organizationTournament);
+                OrganizationTournament::where('tournament_id', $id)->delete();
+                foreach($teamIds as $teamId) {
+                    $organizationTournament[] = [
+                        'tournament_id' => $id, 
+                        'teams_id' => $teamId
+                    ];
+                }
+                OrganizationTournament::insert($organizationTournament);
+                
+                DB::commit();
+                $response = __('message.edit_tournamet_success');
+                return response()->json($response, 200);
+            } catch (Exception $e) {
+                DB::rollBack();
+                
+                $response = __('message.edit_tournamet_fail');
+                return response()->json($e, 422);
             }
-        
-            $response = __('message.edit_tournamet_success');
-            return response()->json($response, 200);
         }
     }
 
