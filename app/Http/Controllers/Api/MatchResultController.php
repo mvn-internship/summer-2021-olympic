@@ -40,7 +40,7 @@ class MatchResultController extends Controller
     {   
        
         $tournaments = Tournament::all();
-        $pointRules = Tournament::with('individual.rank.pointRule')->find(10);
+        $pointRules = Tournament::with('individual.rank.pointRule')->find($id);
         $notification = __('message.updating');
         if( $pointRules->individual == null){
             return response()->json($notification,422);

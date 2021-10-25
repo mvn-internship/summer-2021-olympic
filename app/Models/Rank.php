@@ -13,4 +13,13 @@ class Rank extends Model
     {
         return $this->belongsTo(PointRule::class, 'point_rule_id', 'id');
     }
+    protected $table = 'ranks';
+    protected $fillable = [
+        'id',
+        'name',
+    ];
+
+    public function matchSoccers(){
+        return $this->hasMany(MatchSoccer::class);
+    }
 }
