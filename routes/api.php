@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\TeamController;
+use App\Http\Controllers\Api\TournamentController;
 use App\Http\Controllers\Api\UserMatchController;
 
 /*
@@ -18,6 +20,10 @@ use App\Http\Controllers\Api\UserMatchController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('teams', [TeamController::class, 'index']);
+Route::post('/tournaments', [TournamentController::class, 'store'])->name('admin.storeTournament');
+Route::put('/tournaments/{id?}', [TournamentController::class, 'update'])->name('admin.updateTournament');
 Route::apiResource('staffs', UserMatchController::class, [
     'as' => 'api'
 ]);

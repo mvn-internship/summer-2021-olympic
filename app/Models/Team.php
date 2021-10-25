@@ -16,8 +16,17 @@ class Team extends Model
         'name',
     ];
 
+    public function organizationTournaments(){
+        return $this->hasMany(OrganizationTournament::class, 'teams_id', 'id');
+    }
+    
     public function matchResults()
     {
         return $this->hasMany(MatchResult::class, 'team_id');
+    }
+
+    public function tournaments()
+    {
+        return $this->belongsToMany(Tournament::class, 'organization_tournaments', 'teams_id', 'tournament_id');
     }
 }

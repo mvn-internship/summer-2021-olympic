@@ -24,6 +24,13 @@
             <span>{{ __('label.analysis') }}</span></a>
     </li>
 
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('admin.tournament')}}">
+            <i class="fas fa-futbol"></i>
+            <span>{{ __('label.tournament') }}</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">

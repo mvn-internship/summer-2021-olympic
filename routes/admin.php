@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\TeamController;
+
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatchResultController;
@@ -23,6 +26,12 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/tournaments', [TournamentController::class, 'index'])->name('admin.tournament');
+    Route::get('/tournaments/create', [TournamentController::class, 'create'])->name('admin.createTournament');
+    Route::get('/tournaments/team', [TeamController::class, 'getTeamCreateTournament'])->name('admin.createTournament');
+    Route::get('/tournaments/{id?}', [TournamentController::class, 'edit'])->name('admin.editTournament');
+    Route::delete('tournaments/{id}', [TournamentController::class, 'destroy'])->name('admin.deleteTournament');
+
     Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('admin.listAnalysis');
 
     Route::resource('staffs', UserMatchController::class);
