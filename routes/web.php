@@ -6,7 +6,7 @@ use App\Http\Controllers\UserMatchController;
 use App\Http\Controllers\Auth\UserLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\MatchResultController;
+use App\Http\Controllers\User\MatchResultController;
 
 
 /*
@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth', 'role.user']], function () {
 
 Route::get('/schedule', [ScheduleController::class, 'index'])->name('user.schedule');
 Route::get('/detailschedule', [ScheduleController::class, 'showsDetailSchedule'])->name('user.showsDetailSchedule');
-Route::get('/ranking', [MatchResultController::class, 'showCompetitionRanking'])->name('user.showCompetitionRanking');
+Route::resource('rankings', MatchResultController::class);
 
 
 // Route::group(['prefix' => 'admin'] , function () {
