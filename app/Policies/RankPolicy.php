@@ -10,6 +10,14 @@ class RankPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class RankPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-rank', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class RankPolicy
      */
     public function view(User $user, Rank $rank)
     {
-        //
+        return in_array('view-rank', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class RankPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-rank', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class RankPolicy
      */
     public function update(User $user, Rank $rank)
     {
-        //
+        return in_array('update-rank', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class RankPolicy
      */
     public function delete(User $user, Rank $rank)
     {
-        //
+        return in_array('delete-rank', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class RankPolicy
      */
     public function restore(User $user, Rank $rank)
     {
-        //
+        return in_array('restore-rank', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class RankPolicy
      */
     public function forceDelete(User $user, Rank $rank)
     {
-        //
+        return in_array('forceDelete-rank', $this->permissions);
     }
 }

@@ -10,6 +10,14 @@ class CountryPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class CountryPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-country', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class CountryPolicy
      */
     public function view(User $user, Country $country)
     {
-        //
+        return in_array('view-country', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class CountryPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-country', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class CountryPolicy
      */
     public function update(User $user, Country $country)
     {
-        //
+        return in_array('update-country', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class CountryPolicy
      */
     public function delete(User $user, Country $country)
     {
-        //
+        return in_array('delete-country', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class CountryPolicy
      */
     public function restore(User $user, Country $country)
     {
-        //
+        return in_array('restore-country', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class CountryPolicy
      */
     public function forceDelete(User $user, Country $country)
     {
-        //
+        return in_array('forceDelete-country', $this->permissions);
     }
 }

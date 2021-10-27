@@ -1,4 +1,8 @@
 <?php
+
+use App\Models\Permisson;
+use App\Models\RoleUser;
+
 if (!function_exists('redirectAuthenticatedRoute')) {
     function redirectAuthenticatedRoute()
     {
@@ -9,5 +13,22 @@ if (!function_exists('redirectAuthenticatedRoute')) {
             }
         }
         return redirect()->route('user.home');
+    }
+}
+
+if (!function_exists('getPermissionOfUser')) {
+    function getPermissionOfUser()
+    {
+        $roles = RoleUser::where('user_id', '=', auth()->id())->pluck('role_id');
+
+        $permissions = Permisson::whereHas('role_permissions', function ($query) use ($roles) {
+            $query->whereIn('role_id', $roles);
+        })->pluck('name')->toArray();
+
+        DB::enableQueryLog();
+        return [
+            'roles' =>  $roles,
+            'permissions' => $permissions,
+        ];
     }
 }

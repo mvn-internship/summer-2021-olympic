@@ -10,6 +10,14 @@ class UserMatchPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class UserMatchPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-userMatch', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class UserMatchPolicy
      */
     public function view(User $user, UserMatch $userMatch)
     {
-        //
+        return in_array('view-userMatch', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class UserMatchPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-userMatch', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class UserMatchPolicy
      */
     public function update(User $user, UserMatch $userMatch)
     {
-        //
+        return in_array('update-userMatch', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class UserMatchPolicy
      */
     public function delete(User $user, UserMatch $userMatch)
     {
-        //
+        return in_array('delete-userMatch', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class UserMatchPolicy
      */
     public function restore(User $user, UserMatch $userMatch)
     {
-        //
+        return in_array('restore-userMatch', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class UserMatchPolicy
      */
     public function forceDelete(User $user, UserMatch $userMatch)
     {
-        //
+        return in_array('forceDelete-userMatch', $this->permissions);
     }
 }

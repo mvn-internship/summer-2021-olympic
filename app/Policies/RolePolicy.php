@@ -10,6 +10,14 @@ class RolePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class RolePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-role', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        //
+        return in_array('view-role', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class RolePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-role', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        //
+        return in_array('update-role', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        //
+        return in_array('delete-role', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class RolePolicy
      */
     public function restore(User $user, Role $role)
     {
-        //
+        return in_array('restore-role', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class RolePolicy
      */
     public function forceDelete(User $user, Role $role)
     {
-        //
+        return in_array('forceDelete-role', $this->permissions);
     }
 }

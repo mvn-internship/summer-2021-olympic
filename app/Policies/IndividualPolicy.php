@@ -10,6 +10,14 @@ class IndividualPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class IndividualPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-individual', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class IndividualPolicy
      */
     public function view(User $user, Individual $individual)
     {
-        //
+        return in_array('view-individual', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class IndividualPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-individual', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class IndividualPolicy
      */
     public function update(User $user, Individual $individual)
     {
-        //
+        return in_array('update-individual', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class IndividualPolicy
      */
     public function delete(User $user, Individual $individual)
     {
-        //
+        return in_array('delete-individual', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class IndividualPolicy
      */
     public function restore(User $user, Individual $individual)
     {
-        //
+        return in_array('restore-individual', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class IndividualPolicy
      */
     public function forceDelete(User $user, Individual $individual)
     {
-        //
+        return in_array('forceDelete-individual', $this->permissions);
     }
 }

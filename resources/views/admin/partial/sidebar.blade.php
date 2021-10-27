@@ -33,11 +33,43 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">{{ __('label.manage_staff') }}</h6>
-                <a class="collapse-item" href="{{ route('staffs.index') }}">{{ __('label.list') }}</a>
-                <a class="collapse-item" href="{{ route('staffs.create') }}">{{ __('label.add') }}</a>
+                <a class="collapse-item" href="{{ route('admin.staffs.index') }}">{{ __('label.list') }}</a>
+                <a class="collapse-item" href="{{ route('admin.staffs.create') }}">{{ __('label.add') }}</a>
             </div>
         </div>
     </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
+            <i class="fas fa-fw fa-user-cog"></i>
+            <span>{{ __('label.side-bar.user') }}</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.roles.index') }}">
+            <i class="fas fa-fw fa-user-lock"></i>
+            <span>{{ __('label.side-bar.role') }}</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.permissons.index') }}">
+            <i class="fas fa-fw fa-key"></i>
+            <span>{{ __('label.side-bar.permission') }}</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

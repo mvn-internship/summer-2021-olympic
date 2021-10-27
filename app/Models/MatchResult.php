@@ -18,11 +18,13 @@ class MatchResult extends Model
         'match_id',
     ];
 
-    public function matchSoccer(){
+    public function matchSoccer()
+    {
         return $this->belongsTo(MatchSoccer::class, 'match_id');
     }
 
-    public function team(){
+    public function team()
+    {
         return $this->belongsTo(Team::class);
     }
 }

@@ -10,6 +10,14 @@ class RolePermissonPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class RolePermissonPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-rolePermission', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class RolePermissonPolicy
      */
     public function view(User $user, RolePermisson $rolePermisson)
     {
-        //
+        return in_array('view-rolePermission', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class RolePermissonPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-rolePermission', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class RolePermissonPolicy
      */
     public function update(User $user, RolePermisson $rolePermisson)
     {
-        //
+        return in_array('update-rolePermission', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class RolePermissonPolicy
      */
     public function delete(User $user, RolePermisson $rolePermisson)
     {
-        //
+        return in_array('delete-rolePermission', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class RolePermissonPolicy
      */
     public function restore(User $user, RolePermisson $rolePermisson)
     {
-        //
+        return in_array('restore-rolePermission', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class RolePermissonPolicy
      */
     public function forceDelete(User $user, RolePermisson $rolePermisson)
     {
-        //
+        return in_array('forceDelete-rolePermission', $this->permissions);
     }
 }

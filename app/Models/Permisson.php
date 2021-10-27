@@ -13,5 +13,14 @@ class Permisson extends Model
         'name',
         'display_name',
     ];
- 
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_permissons');
+    }
+
+    public function role_permissions()
+    {
+        return $this->hasMany(RolePermisson::class, 'permisson_id', 'id');
+    }
 }

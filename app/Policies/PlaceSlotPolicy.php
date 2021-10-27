@@ -10,6 +10,14 @@ class PlaceSlotPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class PlaceSlotPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-placeSlot', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class PlaceSlotPolicy
      */
     public function view(User $user, PlaceSlot $placeSlot)
     {
-        //
+        return in_array('view-placeSlot', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class PlaceSlotPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-placeSlot', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class PlaceSlotPolicy
      */
     public function update(User $user, PlaceSlot $placeSlot)
     {
-        //
+        return in_array('update-placeSlot', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class PlaceSlotPolicy
      */
     public function delete(User $user, PlaceSlot $placeSlot)
     {
-        //
+        return in_array('delete-placeSlot', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class PlaceSlotPolicy
      */
     public function restore(User $user, PlaceSlot $placeSlot)
     {
-        //
+        return in_array('restore-placeSlot', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class PlaceSlotPolicy
      */
     public function forceDelete(User $user, PlaceSlot $placeSlot)
     {
-        //
+        return in_array('forceDelete-placeSlot', $this->permissions);
     }
 }

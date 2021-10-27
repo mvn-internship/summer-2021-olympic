@@ -10,6 +10,14 @@ class GroupPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class GroupPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-group', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class GroupPolicy
      */
     public function view(User $user, Group $group)
     {
-        //
+        return in_array('view-group', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class GroupPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-group', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class GroupPolicy
      */
     public function update(User $user, Group $group)
     {
-        //
+        return in_array('update-group', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class GroupPolicy
      */
     public function delete(User $user, Group $group)
     {
-        //
+        return in_array('delete-group', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class GroupPolicy
      */
     public function restore(User $user, Group $group)
     {
-        //
+        return in_array('restore-group', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class GroupPolicy
      */
     public function forceDelete(User $user, Group $group)
     {
-        //
+        return in_array('forceDelete-group', $this->permissions);
     }
 }

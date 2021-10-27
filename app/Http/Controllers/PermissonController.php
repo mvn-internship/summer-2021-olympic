@@ -14,7 +14,9 @@ class PermissonController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.permissions.index', [
+            'permissions' => Permisson::all(),
+        ]);
     }
 
     /**

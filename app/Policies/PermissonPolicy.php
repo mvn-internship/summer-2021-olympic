@@ -10,6 +10,14 @@ class PermissonPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class PermissonPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-permission', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class PermissonPolicy
      */
     public function view(User $user, Permisson $permisson)
     {
-        //
+        return in_array('view-permission', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class PermissonPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-permission', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class PermissonPolicy
      */
     public function update(User $user, Permisson $permisson)
     {
-        //
+        return in_array('update-permission', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class PermissonPolicy
      */
     public function delete(User $user, Permisson $permisson)
     {
-        //
+        return in_array('delete-permission', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class PermissonPolicy
      */
     public function restore(User $user, Permisson $permisson)
     {
-        //
+        return in_array('restore-permission', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class PermissonPolicy
      */
     public function forceDelete(User $user, Permisson $permisson)
     {
-        //
+        return in_array('forceDelete-permission', $this->permissions);
     }
 }

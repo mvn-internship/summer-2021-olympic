@@ -10,6 +10,14 @@ class ParticipantRankPolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $permissions = getPermissionOfUser();
+
+        $this->roles = $permissions['roles'];
+        $this->permissions = $permissions['permissions'];
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +26,7 @@ class ParticipantRankPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return in_array('viewAny-participantRank', $this->permissions);
     }
 
     /**
@@ -30,7 +38,7 @@ class ParticipantRankPolicy
      */
     public function view(User $user, ParticipantRank $participantRank)
     {
-        //
+        return in_array('view-participantRank', $this->permissions);
     }
 
     /**
@@ -41,7 +49,7 @@ class ParticipantRankPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array('create-participantRank', $this->permissions);
     }
 
     /**
@@ -53,7 +61,7 @@ class ParticipantRankPolicy
      */
     public function update(User $user, ParticipantRank $participantRank)
     {
-        //
+        return in_array('update-participantRank', $this->permissions);
     }
 
     /**
@@ -65,7 +73,7 @@ class ParticipantRankPolicy
      */
     public function delete(User $user, ParticipantRank $participantRank)
     {
-        //
+        return in_array('delete-participantRank', $this->permissions);
     }
 
     /**
@@ -77,7 +85,7 @@ class ParticipantRankPolicy
      */
     public function restore(User $user, ParticipantRank $participantRank)
     {
-        //
+        return in_array('restore-participantRank', $this->permissions);
     }
 
     /**
@@ -89,6 +97,6 @@ class ParticipantRankPolicy
      */
     public function forceDelete(User $user, ParticipantRank $participantRank)
     {
-        //
+        return in_array('forceDelete-participantRank', $this->permissions);
     }
 }

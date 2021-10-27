@@ -59,22 +59,17 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Participant::factory(10)->create();
-        \App\Models\Permisson::factory(10)->create();
-        // \App\Models\Role::factory(1)->create();
-        $data=[
-    		[
-    			'name' => 'admin'
-    		],
-            [
-    			'name' => 'client'
-    		],
-            [
-    			'name' => 'referee'
-    		]
-    				
-    	];
+        $this->call(PermissionSeeder::class);
+        $data = [
+            ['name' => 'admin'],
+            ['name' => 'client'],
+            ['name' => 'referee'],
+            ['name' => 'staff'],
+            ['name' => 'secretary'],
+            ['name' => 'team_manager'],
+            ['name' => 'participant']
+        ];
         DB::table('roles')->insert($data);
-        \App\Models\Role::factory(1)->create();
 
         DB::table('role_users')->insert([
             'role_id' => 1,
