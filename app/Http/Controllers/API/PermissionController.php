@@ -70,6 +70,6 @@ class PermissionController extends BaseController
         $permission = Permisson::find($id);
         $permission->roles()->detach();
         $permission->delete();
-        return $this->handleResponse(new Permission($permission), 'Permission delete successfully!');
+        return $this->handleResponse(null, 'Permission delete successfully!');
     }
 }

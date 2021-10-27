@@ -23,15 +23,12 @@ if (!function_exists('getPermissionOfUser')) {
 
         $permissions = Permisson::whereHas('role_permissions', function ($query) use ($roles) {
             $query->whereIn('role_id', $roles);
-        })->get()->toArray();
+        })->pluck('name')->toArray();
 
-        $permissionName = [];
-        foreach ($permissions as $permission) {
-            array_push($permissionName, $permission['name']);
-        };
+        DB::enableQueryLog();
         return [
             'roles' =>  $roles,
-            'permissions' => $permissionName,
+            'permissions' => $permissions,
         ];
     }
 }

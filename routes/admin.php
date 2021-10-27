@@ -6,6 +6,8 @@ use App\Http\Controllers\PermissonController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MatchResultController;
+
 use App\Http\Controllers\UserMatchController;
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'role.admin'], 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/analysis', [MatchResultController::class, 'showAnalysis'])->name('listAnalysis');
+
     Route::resource('staffs', UserMatchController::class);
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');

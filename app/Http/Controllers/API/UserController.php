@@ -93,6 +93,6 @@ class UserController extends BaseController
     {
         $user = User::find($id);
         $user->toggleStatus()->save();
-        return $this->handleResponse(new ResourcesUser($user), 'User status update successfully!');
+        return $this->handleResponse(null, 'User status update successfully!');
     }
 }

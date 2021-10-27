@@ -84,6 +84,6 @@ class RoleController extends BaseController
         $role = Role::find($id);
         $role->permissions()->detach();
         $role->delete();
-        return $this->handleResponse(new ResourcesRole($role), 'Role delete successfully!');
+        return $this->handleResponse(null, 'Role delete successfully!');
     }
 }

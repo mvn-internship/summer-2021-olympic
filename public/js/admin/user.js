@@ -52,7 +52,18 @@ $(document).ready(function () {
         var id = $(this).data("id");
         let _url = `/api/users/${id}`;
         let _token = $('meta[name="csrf-token"]').attr("content");
-        var row = $(this).closest("tr");
+        var cell = $(this).closest("td");
+
+        var status = $(this).hasClass("btn-success") ? "warning" : "success";
+        var content = $(this).hasClass("btn-success") ? "Inactive" : "Active";
+        var replaceContent =
+            '<button class="btn btn-' +
+            status +
+            ' status" data-id="' +
+            id +
+            '">' +
+            content +
+            "</button>";
 
         $.ajax({
             url: _url,
@@ -61,7 +72,7 @@ $(document).ready(function () {
                 _token: _token,
             },
             success: function (response) {
-                updateTableRow(response, row);
+                table.cell(cell).data(replaceContent).draw();
             },
             error: function (response) {
                 console.log("Toggle Fail");
@@ -133,7 +144,9 @@ $(document).ready(function () {
                 },
                 error: function (response) {
                     clearValidation();
-                    showValidation(response);
+                    if (response.responseJSON.message) {
+                        console.log(response.responseJSON.message);
+                    } else showValidation(response);
                 },
             });
         }

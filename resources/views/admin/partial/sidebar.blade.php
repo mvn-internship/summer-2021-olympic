@@ -18,6 +18,12 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('label.side-bar.dashboard') }}</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.listAnalysis') }}">
+            <i class="fas fa-list"></i>
+            <span>{{ __('label.analysis') }}</span></a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
